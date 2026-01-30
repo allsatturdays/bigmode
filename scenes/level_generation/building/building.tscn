@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cydsxqrhewue4"]
+
+[ext_resource type="Script" uid="uid://1kyt7dg0og7n" path="res://scenes/level_generation/building/building.gd" id="1_1l2ay"]
+
+[node name="Building" type="Node" unique_id=688169817]
+script = ExtResource("1_1l2ay")
+room_array = Array[String](["res://scenes/level_generation/room/room_template.tscn", "res://scenes/level_generation/room/rooms/test_room_1.tscn", "res://scenes/level_generation/room/rooms/test_room_2.tscn"])

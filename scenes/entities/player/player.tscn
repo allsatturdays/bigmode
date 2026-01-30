@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b6xjjrtbwss1k"]
+
+[ext_resource type="Script" uid="uid://evwg3pin3mdn" path="res://scenes/entities/player/player.gd" id="1_symyc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abrql"]
+size = Vector3(0.5, 1, 0.5)
+
+[node name="Player" type="CharacterBody3D" unique_id=2141726005 groups=["player"]]
+script = ExtResource("1_symyc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1195470030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173366, 0)
+shape = SubResource("BoxShape3D_symyc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890938399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173366, 0)
+mesh = SubResource("BoxMesh_abrql")
