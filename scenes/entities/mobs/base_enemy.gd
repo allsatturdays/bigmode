@@ -1,16 +1,13 @@
 extends CharacterBody3D
 class_name BaseEnemy
 
-const DASH_SPEED = 10.0
-const GRID_SIZE = .5
+var DASH_SPEED: float = 10.0
+const GRID_SIZE: float = .5
 
 var is_moving: bool = false
 var move_direction: Vector3 = Vector3.ZERO
-var move_time: float = 0.5
 
-@export var hurtbox: Area3D
-
-func _ready():
+func _ready() -> void:
 	# Snap to grid on start
 	position = Vector3(
 		round(position.x / GRID_SIZE) * GRID_SIZE,
@@ -21,32 +18,10 @@ func _ready():
 	# Connect to the GameEvents signal
 	GameEvents.on_player_move.connect(_on_player_move)
 
-func _physics_process(delta):
-	if is_moving:
-		move_time -= delta 
-		if(move_time <= 0.0):
-			is_moving = false 
-			move_time = 0.5
-		else:
-			# Continue moving
-			velocity = (move_direction * DASH_SPEED) 
-			move_and_slide()
-			
-			# Check if we've hit a wall or obstacle
-			if get_slide_collision_count() > 0:
-				# Snap to grid position
-				position = Vector3(
-					round(position.x / GRID_SIZE) * GRID_SIZE,
-					position.y,
-					round(position.z / GRID_SIZE) * GRID_SIZE
-				)
-				is_moving = false
-				velocity = Vector3.ZERO
+
 
 # Override this method in child classes for different behaviors
 func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
-	# Default behavior: do nothing
-	# Child classes should override this
 	pass
 
 # Helper function to start moving in a direction

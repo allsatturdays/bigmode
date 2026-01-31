@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://evwg3pin3mdn" path="res://scenes/entities/player/player.gd" id="3_svqro"]
 [ext_resource type="SpriteFrames" uid="uid://dvb2p3rktyxpx" path="res://assets/prototype-sprites/prototype-sprite.tres" id="4_lwd3l"]
 [ext_resource type="PackedScene" uid="uid://b6sa3exvxnqm7" path="res://scenes/game_objects/end_of_room/end_of_room.tscn" id="5_ousg4"]
-[ext_resource type="PackedScene" uid="uid://cvlr4y1vkrr3v" path="res://scenes/entities/mobs/dog_enemy/dog_enemy.tscn" id="10_pk7lj"]
+[ext_resource type="PackedScene" uid="uid://t6lytt658ccx" path="res://scenes/entities/mobs/security_enemy/security_enemy.tscn" id="6_g2fsx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
 size = Vector3(0.5, 1, 0.5)
@@ -90,10 +90,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 1.2461548, -8.003433)
 shape = SubResource("BoxShape3D_peyp1")
 
-[node name="DogEnemy" parent="." unique_id=1185911118 instance=ExtResource("10_pk7lj")]
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=674643365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7544656, 0)
 mesh = SubResource("QuadMesh_26qen")
+
+[node name="SecurityEnemy" parent="." unique_id=1114147889 instance=ExtResource("6_g2fsx")]
 
 [connection signal="body_entered" from="Player/HurtboxArea3D" to="Player" method="_on_hurtbox_area_3d_body_entered"]

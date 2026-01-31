@@ -7,7 +7,7 @@ height = 1.2045898
 
 [sub_resource type="BoxMesh" id="BoxMesh_exbvd"]
 
-[node name="DogEnemy" type="CharacterBody3D" unique_id=1185911118 groups=["mob"]]
+[node name="DogEnemy" type="CharacterBody3D" unique_id=160743838 groups=["mob"]]
 script = ExtResource("1_fes5n")
 metadata/_custom_type_script = "uid://c3l5b7gwwtaf6"
 
