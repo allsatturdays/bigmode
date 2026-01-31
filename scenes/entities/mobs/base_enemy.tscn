@@ -6,9 +6,8 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_q2778"]
 
-[node name="BaseEnemy" type="CharacterBody3D" unique_id=476606447 node_paths=PackedStringArray("hurtbox") groups=["mob"]]
+[node name="BaseEnemy" type="CharacterBody3D" unique_id=476606447 groups=["mob"]]
 script = ExtResource("1_q2778")
-hurtbox = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1113957549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504833, 0)

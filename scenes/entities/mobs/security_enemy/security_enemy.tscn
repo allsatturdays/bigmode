@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://t6lytt658ccx"]
+
+[ext_resource type="Script" uid="uid://b3t34rmf7evbl" path="res://scenes/entities/mobs/security_enemy/security_enemy.gd" id="1_8tbxj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8tbxj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tbxj"]
+albedo_color = Color(0.8046013, 0.13725561, 0.16014206, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tbxj"]
+height = 1.2045898
+
+[node name="SecurityEnemy" type="CharacterBody3D" unique_id=1114147889 groups=["mob"]]
+script = ExtResource("1_8tbxj")
+metadata/_custom_type_script = "uid://c3l5b7gwwtaf6"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=875896713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509481, 0)
+mesh = SubResource("BoxMesh_8tbxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_8tbxj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=565489240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5582998, 0)
+shape = SubResource("CapsuleShape3D_8tbxj")
