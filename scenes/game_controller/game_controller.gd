@@ -10,11 +10,15 @@ var current_2d_scene
 var current_gui_scene
 
 @onready var building: Building = $Building
+@onready var scene_transition = $GUI/SceneTransition
+@onready var dialogue_controller: DialogueController = $DialogueController
+
+
 
 func _ready() -> void:
 	Main.game_controller = self
 	building.generate_rooms()
-	current_3d_scene = $World3D/Room
+	current_3d_scene = $World3D/Room2
 	
 
 func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
@@ -31,6 +35,7 @@ func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool
 	
 	
 func change_3d_scene(new_scene: String, delete: bool = true, keep_running: bool = false )-> void:
+	await scene_transition.play_transition()
 	if current_3d_scene != null:
 		if delete:
 			current_3d_scene.queue_free()

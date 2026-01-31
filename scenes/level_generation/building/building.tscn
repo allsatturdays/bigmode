@@ -5,3 +5,4 @@
 [node name="Building" type="Node" unique_id=688169817]
 script = ExtResource("1_1l2ay")
 room_array = Array[String](["res://scenes/level_generation/room/room_template.tscn", "res://scenes/level_generation/room/rooms/test_room_1.tscn", "res://scenes/level_generation/room/rooms/test_room_2.tscn"])
+debug_room_array = Array[String](["res://scenes/level_generation/room/rooms/test_room_1.tscn"])

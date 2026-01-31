@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://bk4ex2rnrii2x"]
 
 [ext_resource type="Script" uid="uid://ch3h786r7ac6d" path="res://scenes/game_controller/game_controller.gd" id="1_xa5k5"]
-[ext_resource type="PackedScene" uid="uid://b1pq737stay8g" path="res://scenes/level_generation/room/room_template.tscn" id="2_y1byc"]
+[ext_resource type="PackedScene" uid="uid://lc37mujcfol1" path="res://scenes/level_generation/room/rooms/test_room_4.tscn" id="2_gupwa"]
+[ext_resource type="PackedScene" uid="uid://d16vus1j4ktbv" path="res://scenes/ui/main_menu/main_menu.tscn" id="3_gupwa"]
 [ext_resource type="PackedScene" uid="uid://cydsxqrhewue4" path="res://scenes/level_generation/building/building.tscn" id="3_ubedv"]
+[ext_resource type="PackedScene" uid="uid://daw4oh1hf2c0e" path="res://scenes/ui/scene_transition/scene_transition.tscn" id="4_s8vvr"]
+[ext_resource type="PackedScene" uid="uid://dlocyykllqupr" path="res://scenes/dialogue_controller/dialogue_controller.tscn" id="6_giy5l"]
 
 [sub_resource type="Environment" id="Environment_tf5t3"]
+background_mode = 1
+background_color = Color(0.91249937, 0.9209317, 0.9440476, 1)
+sdfgi_enabled = true
 
 [node name="GameController" type="Node" unique_id=507247862 node_paths=PackedStringArray("world_3d", "world_2d", "gui")]
 script = ExtResource("1_xa5k5")
@@ -18,11 +24,13 @@ gui = NodePath("GUI")
 environment = SubResource("Environment_tf5t3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=878945815]
-transform = Transform3D(1, 0, 0, 0, 0.75079167, 0.6605391, 0, -0.6605391, 0.75079167, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.87191546, 0.4896564, 0, -0.4896564, 0.87191546, 0, 2.2859454, 0)
+light_energy = 0.3
+sky_mode = 1
 
 [node name="World3D" type="Node3D" parent="." unique_id=1206072884]
 
-[node name="Room" parent="World3D" unique_id=618092124 instance=ExtResource("2_y1byc")]
+[node name="Room2" parent="World3D" unique_id=1994244316 instance=ExtResource("2_gupwa")]
 
 [node name="World2D" type="Node2D" parent="." unique_id=271297995]
 
@@ -32,4 +40,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="MainMenu" parent="GUI" unique_id=535196375 instance=ExtResource("3_gupwa")]
+
+[node name="SceneTransition" parent="GUI" unique_id=1565235032 instance=ExtResource("4_s8vvr")]
+
 [node name="Building" parent="." unique_id=688169817 instance=ExtResource("3_ubedv")]
+
+[node name="DialogueController" parent="." unique_id=1384869778 instance=ExtResource("6_giy5l")]

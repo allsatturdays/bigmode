@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://b6xjjrtbwss1k"]
 
 [ext_resource type="Script" uid="uid://evwg3pin3mdn" path="res://scenes/entities/player/player.gd" id="1_symyc"]
+[ext_resource type="SpriteFrames" uid="uid://dvb2p3rktyxpx" path="res://assets/prototype-sprites/prototype-sprite.tres" id="2_635qg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
 size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_abrql"]
 size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hmtu"]
 
 [node name="Player" type="CharacterBody3D" unique_id=2141726005 groups=["player"]]
 script = ExtResource("1_symyc")
@@ -17,4 +20,19 @@ shape = SubResource("BoxShape3D_symyc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890938399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173366, 0)
+visible = false
 mesh = SubResource("BoxMesh_abrql")
+
+[node name="HurtboxArea3D" type="Area3D" parent="." unique_id=1005525998]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxArea3D" unique_id=517811252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54079795, 0)
+shape = SubResource("BoxShape3D_1hmtu")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=819043581]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.7902682, 0)
+billboard = 1
+sprite_frames = ExtResource("2_635qg")
+frame_progress = 0.39577526
+
+[connection signal="body_entered" from="HurtboxArea3D" to="." method="_on_hurtbox_area_3d_body_entered"]

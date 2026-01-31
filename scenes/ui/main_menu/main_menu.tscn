@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d16vus1j4ktbv"]
+
+[ext_resource type="Script" uid="uid://b2cfravxkiw7w" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=535196375]
+script = ExtResource("1_1ch07")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1427031330]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 96.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer" unique_id=599438380]
+layout_mode = 2
+color = Color(0.44291076, 0.44291076, 0.44291073, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer" unique_id=642004277]
+layout_mode = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_right = 500
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer" unique_id=213179373]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=765387218]
+layout_mode = 2
+text = "Game Name"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=388977290]
+layout_mode = 2
+text = "start"
+
+[node name="Settings" type="Button" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=1580953117]
+layout_mode = 2
+text = "options"
+
+[node name="Quit" type="Button" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=232908667]
+layout_mode = 2
+text = "quit
+"
+
+[connection signal="pressed" from="AspectRatioContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

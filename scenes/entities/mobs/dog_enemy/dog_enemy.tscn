@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cvlr4y1vkrr3v"]
+
+[ext_resource type="Script" uid="uid://c0xnwkh1nyakq" path="res://scenes/entities/mobs/dog_enemy/dog_enemy.gd" id="1_fes5n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fes5n"]
+height = 1.2045898
+
+[sub_resource type="BoxMesh" id="BoxMesh_exbvd"]
+
+[node name="DogEnemy" type="CharacterBody3D" unique_id=1185911118 groups=["mob"]]
+script = ExtResource("1_fes5n")
+metadata/_custom_type_script = "uid://c3l5b7gwwtaf6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=66516934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5582998, 0)
+shape = SubResource("CapsuleShape3D_fes5n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1468609832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504833, 0)
+mesh = SubResource("BoxMesh_exbvd")

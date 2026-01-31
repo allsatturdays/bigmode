@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cms11rtndxf7t"]
+
+[ext_resource type="Script" uid="uid://casv4mnmpbqyk" path="res://scenes/ui/game_over_ui/on_death_screen.gd" id="1_k5uk0"]
+
+[node name="OnDeathScreen" type="CanvasLayer" unique_id=464754132]
+script = ExtResource("1_k5uk0")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1655192858]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0011503, 1.0274702)
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer" unique_id=819647919]
+layout_mode = 2
+color = Color(0.22670749, 0.22670752, 0.22670743, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer" unique_id=1827268543]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer" unique_id=1433756831]
+layout_mode = 2
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=1149432463]
+layout_mode = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=637665333]
+layout_mode = 2
+text = "RESTART"
+
+[connection signal="pressed" from="AspectRatioContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

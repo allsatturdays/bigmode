@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://242sa0d1hut5"]
+
+[ext_resource type="Shader" uid="uid://bfmt74auqkmsc" path="res://shaders/mobius_outline.gdshader" id="1_cxto0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8v6m1"]
+render_priority = 0
+shader = ExtResource("1_cxto0")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_threshold = 0.01
+shader_parameter/noise_frequency = 10.0
+shader_parameter/noise_offset_intensity = 0.002
+
+[sub_resource type="BoxMesh" id="BoxMesh_0hf3w"]
+material = SubResource("ShaderMaterial_8v6m1")
+size = Vector3(2, 2, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1324492081]
+transform = Transform3D(0.9999559, -0.006234199, 0.006943777, 0.00637421, 0.99977326, -0.020312846, -0.0068157464, 0.020355806, 0.9997691, 0, 0, 0)
+mesh = SubResource("BoxMesh_0hf3w")

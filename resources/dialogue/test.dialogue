@@ -1,0 +1,11 @@
+~ start
+FOX: [[Hi|Hello|Howdy]], this is some dialogue.
+FOX: Here are some choices.
+- First one
+	TEST: You picked the first one.
+- Second one
+	TEST: You picked the second one.
+- Start again => start
+- End the conversation => END
+FOX: For more information see the online documentation.
+=> END

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bnwo12pb7g672"]
+
+[ext_resource type="Script" uid="uid://c3l5b7gwwtaf6" path="res://scenes/entities/mobs/base_enemy.gd" id="1_q2778"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2778"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q2778"]
+
+[node name="BaseEnemy" type="CharacterBody3D" unique_id=476606447 node_paths=PackedStringArray("hurtbox") groups=["mob"]]
+script = ExtResource("1_q2778")
+hurtbox = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1113957549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504833, 0)
+shape = SubResource("BoxShape3D_q2778")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1994139012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504833, 0)
+mesh = SubResource("BoxMesh_q2778")
