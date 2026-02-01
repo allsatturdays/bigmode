@@ -34,6 +34,11 @@ transform = Transform3D(0.99999994, -3.5527137e-15, 0, 3.5527137e-15, 0.99999994
 target_position = Vector3(50, 0, 0)
 collision_mask = 2
 
+[node name="RayCast3D3" type="RayCast3D" parent="." unique_id=819726761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49547803, -0.01911065)
+target_position = Vector3(50, 0, 0)
+collision_mask = 2
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2035821577]
 transform = Transform3D(-2.3482313e-08, 0.68985635, 0, -0.53721267, -3.015458e-08, 0, 0, 0, 0.4020961, 0.33406782, 0.49720418, 0)
 mesh = SubResource("PrismMesh_cj1nf")

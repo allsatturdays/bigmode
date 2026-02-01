@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://brfn2ysrr31ek"]
+
+[ext_resource type="Script" uid="uid://6ogiqqci2hc" path="res://scenes/game_objects/stage_hazard/stage_hazard.gd" id="1_o5bew"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_el0ng"]
+size = Vector3(5, 1, 0.25)
+
+[sub_resource type="PrismMesh" id="PrismMesh_el0ng"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ictr"]
+size = Vector3(4.9299316, 1, 0.44891357)
+
+[node name="StageHazard" type="Node3D" unique_id=51516830]
+script = ExtResource("1_o5bew")
+
+[node name="BaseMeshInstance3D" type="MeshInstance3D" parent="." unique_id=25952188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.13687074)
+mesh = SubResource("BoxMesh_el0ng")
+
+[node name="SpikeContainer" type="Node3D" parent="." unique_id=116874389]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpikeContainer" unique_id=1173085284]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, 0, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpikeContainer" unique_id=1863132618]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, -2.379354, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SpikeContainer" unique_id=1040226505]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, -1.8488524, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SpikeContainer" unique_id=1040643241]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, -1.0565372, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SpikeContainer" unique_id=155089820]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, -0.51693344, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="SpikeContainer" unique_id=51606314]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, 0.4047048, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SpikeContainer" unique_id=506716712]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, 1.0181667, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="SpikeContainer" unique_id=240732188]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, 1.4575955, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="SpikeContainer" unique_id=1104470094]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, 2.3216624, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="SpikeContainer" unique_id=193858093]
+transform = Transform3D(0.2031501, 0, 0, 0, -2.093631e-08, -1, 0, 0.47896695, -4.371139e-08, 1.986933, 0, 0.4911363)
+mesh = SubResource("PrismMesh_el0ng")
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=1491710885]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1718677467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008178711, 0, 0.5065613)
+shape = SubResource("BoxShape3D_5ictr")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
