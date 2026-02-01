@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var dash_speed: float = 60.0
 @export var grid_size: float = .5
+@export var new_room_control_freeze_time: float = .5 
 
 var can_control: bool = false
 var is_dashing: bool = false
@@ -13,9 +14,9 @@ var target_position: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	sprite.play("default")
-	GameEvents.connect("on_room_complete", _on_room_complete)
 	GameEvents.connect("on_transition_start", _on_transition_start)
 	GameEvents.connect("on_transition_complete", _on_transition_complete)
+	GameEvents.connect("on_game_start", _on_game_start)
 	
 	position = Vector3(
 		round(position.x / grid_size) * grid_size,
@@ -56,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_pressed("move_right"):
 			input_dir = Vector3.RIGHT
 			
-		if input_dir != Vector3.ZERO and can_move_in_direction(input_dir):
+		if input_dir != Vector3.ZERO and can_move_in_direction(input_dir) and can_control:
 			start_dash(input_dir)
 			GameEvents.on_player_move.emit(position, position + input_dir)
 
@@ -87,10 +88,6 @@ func can_move_in_direction(direction: Vector3) -> bool:
 	var result = space_state.intersect_ray(query)
 	return result.is_empty()
 
-func _on_room_complete(next_room: String) -> void:
-	print('success')
-	Main.game_controller.change_3d_scene(next_room, true, false)
-
 
 func _on_hurtbox_area_3d_body_entered(body) -> void:
 	if body.is_in_group("mob"):
@@ -100,4 +97,7 @@ func _on_transition_start() -> void:
 	can_control = false
 
 func _on_transition_complete() -> void:
+	can_control = true
+	
+func _on_game_start() -> void:
 	can_control = true

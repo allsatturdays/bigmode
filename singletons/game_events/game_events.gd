@@ -7,3 +7,4 @@ signal on_player_move(player_start_position: Vector3, player_direction_position:
 signal on_transition_complete()
 signal on_transition_start()
 signal on_player_death()
+signal on_game_start()

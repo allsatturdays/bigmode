@@ -21,8 +21,6 @@ func play_transition() -> void:
 
 func play_room_transition() -> void:
 	anim_player.play("room_transition")
-	await anim_player.animation_finished
-	GameEvents.on_transition_complete.emit()
 	
 	
 func play_building_transition1() -> void:
@@ -36,7 +34,7 @@ func play_building_transition2() -> void:
 	await anim_player.animation_finished
 	is_in_dialogue = false
 	is_building_transition = false
-	GameEvents.on_transition_complete.emit()
+
 
 func _on_building_complete() -> void:
 	is_building_transition = true
@@ -45,3 +43,5 @@ func _on_dialogue_ended(resource: Resource) -> void:
 	is_in_dialogue = false
 	play_building_transition2()
 	
+func emit_transition_complete() -> void:
+	GameEvents.emit_signal("on_transition_complete")
