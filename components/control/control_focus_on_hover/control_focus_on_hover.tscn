@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lrcyvqljvylc"]
+
+[ext_resource type="Script" uid="uid://ce87uqs6tldfh" path="res://components/control/control_focus_on_hover/control_focus_on_hover.gd" id="1_ic1g2"]
+
+[node name="ControlFocusOnHover" type="Node" unique_id=498273041]
+script = ExtResource("1_ic1g2")

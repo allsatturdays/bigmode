@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://mtltwb4qvb4f"]
+
+[ext_resource type="Script" uid="uid://0c1pso25ctg2" path="res://components/audio/tree_audio/button_audio/button_audio.gd" id="1_hsr5b"]
+
+[node name="ButtonAudio" type="Node" unique_id=1479258445]
+script = ExtResource("1_hsr5b")
+
+[node name="LastInteractionTimer" type="Timer" parent="." unique_id=783580704]
+unique_name_in_owner = true

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ckpai8tnmd8pm"]
+
+[ext_resource type="Script" uid="uid://dodyrdeyb3lbk" path="res://singletons/audio_manager/audio_helper_classes/audio_configuration/configuration_audio.gd" id="1_khm5n"]
+
+[node name="ConfigurationAudio" type="Node" unique_id=655603310]
+script = ExtResource("1_khm5n")

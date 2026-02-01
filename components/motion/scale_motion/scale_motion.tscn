@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://djk5fgoeu8lr8"]
+
+[ext_resource type="Script" uid="uid://dqpqfetrkfsya" path="res://components/motion/scale_motion/scale_motion.gd" id="1_c8re7"]
+
+[node name="ScaleMotion" type="Node" unique_id=293757899]
+script = ExtResource("1_c8re7")
+metadata/_custom_type_script = "uid://bw10ef5isykje"

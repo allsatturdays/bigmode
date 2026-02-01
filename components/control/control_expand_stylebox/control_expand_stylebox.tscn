@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hms5apo4h5ad"]
+
+[ext_resource type="Script" uid="uid://bnpk0561gmgus" path="res://components/control/control_expand_stylebox/control_expand_stylebox.gd" id="1_w28o1"]
+
+[node name="ControlExpandStylebox" type="Node" unique_id=1664905524]
+script = ExtResource("1_w28o1")

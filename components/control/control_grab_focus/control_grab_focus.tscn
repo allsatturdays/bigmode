@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cegf3gabvsje2"]
+
+[ext_resource type="Script" uid="uid://ul27hukjv1dn" path="res://components/control/control_grab_focus/control_grab_focus.gd" id="1_b8hc8"]
+
+[node name="ControlGrabFocus" type="Node" unique_id=1949941611]
+script = ExtResource("1_b8hc8")

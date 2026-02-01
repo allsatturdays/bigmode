@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c6uvue5bfuwvh"]
+
+[ext_resource type="Script" uid="uid://cf66t2yxmkm18" path="res://components/audio/slider_audio/slider_audio.gd" id="1_hchvc"]
+
+[node name="SliderAudio" type="Node" unique_id=1914813447]
+script = ExtResource("1_hchvc")

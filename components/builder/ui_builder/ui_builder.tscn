@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cqdh08oywawux"]
+
+[ext_resource type="Script" uid="uid://ntgbr3ll3l3w" path="res://components/builder/ui_builder/ui_builder.gd" id="1_lkrrc"]
+[ext_resource type="PackedScene" uid="uid://lrcyvqljvylc" path="res://components/control/control_focus_on_hover/control_focus_on_hover.tscn" id="3_7t4su"]
+[ext_resource type="PackedScene" uid="uid://do8fcidjmhexk" path="res://components/motion/twist_motion/twist_motion.tscn" id="3_vbux7"]
+
+[node name="UiBuilder" type="Node" unique_id=1745100880]
+script = ExtResource("1_lkrrc")
+not_condition_properties = {
+"\"focus_mode\"": 0
+}
+attach_components = Array[PackedScene]([ExtResource("3_vbux7"), ExtResource("3_7t4su")])
+metadata/_custom_type_script = "uid://lqr58tjov26w"

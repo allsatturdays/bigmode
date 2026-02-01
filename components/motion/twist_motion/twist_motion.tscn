@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://do8fcidjmhexk"]
+
+[ext_resource type="Script" uid="uid://caam5ko3nhpc6" path="res://components/motion/twist_motion/twist_motion.gd" id="1_r8c8w"]
+
+[node name="TwistMotion" type="Node" unique_id=798735239]
+script = ExtResource("1_r8c8w")
+metadata/_custom_type_script = "uid://bw10ef5isykje"

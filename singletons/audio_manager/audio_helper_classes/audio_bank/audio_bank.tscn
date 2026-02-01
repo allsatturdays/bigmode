@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ba0uhxq56sm1o"]
+
+[ext_resource type="Script" uid="uid://oxwsf8l10sg1" path="res://singletons/audio_manager/audio_helper_classes/audio_bank/audio_bank.gd" id="1_qm0kb"]
+
+[node name="AudioBank" type="Node" unique_id=1707236696]
+script = ExtResource("1_qm0kb")
+tracks = Array[AudioStream]([null])

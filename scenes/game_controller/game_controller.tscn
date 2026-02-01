@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ch3h786r7ac6d" path="res://scenes/game_controller/game_controller.gd" id="1_xa5k5"]
 [ext_resource type="PackedScene" uid="uid://lc37mujcfol1" path="res://scenes/level_generation/room/rooms/test_room_4.tscn" id="2_gupwa"]
-[ext_resource type="PackedScene" uid="uid://d16vus1j4ktbv" path="res://scenes/ui/main_menu/main_menu.tscn" id="3_gupwa"]
+[ext_resource type="PackedScene" uid="uid://d16vus1j4ktbv" path="res://scenes/ui/main_menu/temp/temp_main_menu.tscn" id="3_gupwa"]
 [ext_resource type="PackedScene" uid="uid://cydsxqrhewue4" path="res://scenes/level_generation/building/building.tscn" id="3_ubedv"]
 [ext_resource type="PackedScene" uid="uid://daw4oh1hf2c0e" path="res://scenes/ui/scene_transition/scene_transition.tscn" id="4_s8vvr"]
 [ext_resource type="PackedScene" uid="uid://dlocyykllqupr" path="res://scenes/dialogue_controller/dialogue_controller.tscn" id="6_giy5l"]

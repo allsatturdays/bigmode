@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bf2ow62xsjav2"]
+
+[ext_resource type="Script" uid="uid://8hci3hidiv8m" path="res://components/audio/tree_audio/tree_audio.gd" id="1_ppx73"]
+
+[node name="TreeAudio" type="Node" unique_id=552037018]
+script = ExtResource("1_ppx73")
