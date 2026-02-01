@@ -92,6 +92,3 @@ func calculate_valid_steps(direction: Vector3, max_steps: int) -> int:
 			break  # Hit a wall, can't go further
 	
 	return valid_steps
-
-
-#

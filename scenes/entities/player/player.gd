@@ -46,19 +46,19 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("move_up"):
 			input_dir = Vector3.FORWARD  
-			GameEvents.on_player_move.emit(position, position + input_dir)
+			
 		elif Input.is_action_just_pressed("move_down"):
 			input_dir = Vector3.BACK
-			GameEvents.on_player_move.emit(position, position + input_dir)
+			
 		elif Input.is_action_just_pressed("move_left"):
 			input_dir = Vector3.LEFT
-			GameEvents.on_player_move.emit(position, position + input_dir)
+			
 		elif Input.is_action_just_pressed("move_right"):
 			input_dir = Vector3.RIGHT
-			GameEvents.on_player_move.emit(position, position + input_dir)
-		
-		if input_dir != Vector3.ZERO:
+			
+		if input_dir != Vector3.ZERO and can_move_in_direction(input_dir):
 			start_dash(input_dir)
+			GameEvents.on_player_move.emit(position, position + input_dir)
 
 func start_dash(direction: Vector3) -> void:
 	sprite.play("dash")
@@ -74,7 +74,19 @@ func start_dash(direction: Vector3) -> void:
 	if result.is_empty():
 		is_dashing = true
 		dash_direction = direction
-		
+
+# Helper function to check if can move in a direction
+func can_move_in_direction(direction: Vector3) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(
+		position,
+		position + direction * 0.5
+	)
+	query.exclude = [self]
+	
+	var result = space_state.intersect_ray(query)
+	return result.is_empty()
+
 func _on_room_complete(next_room: String) -> void:
 	print('success')
 	Main.game_controller.change_3d_scene(next_room, true, false)
@@ -82,7 +94,7 @@ func _on_room_complete(next_room: String) -> void:
 
 func _on_hurtbox_area_3d_body_entered(body) -> void:
 	if body.is_in_group("mob"):
-		Main.game_controller.change_gui_scene("res://scenes/ui/game_over_ui/on_death_screen.tscn", true, false)
+		GameEvents.on_player_death.emit()
 		
 func _on_transition_start() -> void:
 	can_control = false

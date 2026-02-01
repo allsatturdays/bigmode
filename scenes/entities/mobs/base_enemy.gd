@@ -18,8 +18,6 @@ func _ready() -> void:
 	# Connect to the GameEvents signal
 	GameEvents.on_player_move.connect(_on_player_move)
 
-
-
 # Override this method in child classes for different behaviors
 func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
 	pass

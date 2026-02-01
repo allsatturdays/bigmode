@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dvb2p3rktyxpx" path="res://assets/prototype-sprites/prototype-sprite.tres" id="2_635qg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(0.8635254, 1, 0.74487305)
 
 [sub_resource type="BoxMesh" id="BoxMesh_abrql"]
 size = Vector3(0.5, 1, 0.5)
@@ -12,10 +12,11 @@ size = Vector3(0.5, 1, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1hmtu"]
 
 [node name="Player" type="CharacterBody3D" unique_id=2141726005 groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_symyc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1195470030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173366, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028930664, 0.5173366, -0.040161133)
 shape = SubResource("BoxShape3D_symyc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890938399]

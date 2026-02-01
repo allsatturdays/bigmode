@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0ogfgrwmyx62"]
+
+[ext_resource type="Script" uid="uid://vrhu4kdji7v2" path="res://scenes/entities/mobs/gunman_enemy/gunman_enemy.gd" id="1_cj1nf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cj1nf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2eqf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cj1nf"]
+albedo_color = Color(0, 0.70179814, 0.7017979, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_cj1nf"]
+
+[node name="GunmanEnemy" type="CharacterBody3D" unique_id=543380334]
+script = ExtResource("1_cj1nf")
+metadata/_custom_type_script = "uid://c3l5b7gwwtaf6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1156236177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51281506, 0)
+shape = SubResource("BoxShape3D_cj1nf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1384610541]
+transform = Transform3D(0.5076083, 0, 0, 0, 1, 0, 0, 0, 1, -0.2317082, 0.51281506, 0)
+mesh = SubResource("BoxMesh_i2eqf")
+surface_material_override/0 = SubResource("StandardMaterial3D_cj1nf")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1113504152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49547803, -0.33715802)
+target_position = Vector3(50, 0, 0)
+collision_mask = 2
+
+[node name="RayCast3D2" type="RayCast3D" parent="." unique_id=751400754]
+transform = Transform3D(0.99999994, -3.5527137e-15, 0, 3.5527137e-15, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.49547803, 0.25895)
+target_position = Vector3(50, 0, 0)
+collision_mask = 2
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2035821577]
+transform = Transform3D(-2.3482313e-08, 0.68985635, 0, -0.53721267, -3.015458e-08, 0, 0, 0, 0.4020961, 0.33406782, 0.49720418, 0)
+mesh = SubResource("PrismMesh_cj1nf")

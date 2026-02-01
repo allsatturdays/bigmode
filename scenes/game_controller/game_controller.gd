@@ -16,6 +16,7 @@ var current_gui_scene
 
 
 func _ready() -> void:
+	GameEvents.connect("on_player_death", _on_player_death)
 	Main.game_controller = self
 	building.generate_rooms()
 	current_3d_scene = $World3D/Room2
@@ -59,3 +60,8 @@ func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 	var new = load(new_scene).instantiate()
 	world_2d.add_child(new)
 	current_2d_scene = new
+
+
+func _on_player_death() -> void:
+	change_gui_scene("res://scenes/ui/game_over_ui/on_death_screen.tscn", true, false)
+	
