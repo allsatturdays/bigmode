@@ -46,6 +46,6 @@ offset_bottom = 40.0
 
 [node name="Building" parent="." unique_id=688169817 instance=ExtResource("3_ubedv")]
 room_array = Array[String](["res://scenes/level_generation/room/room_template.tscn", "res://scenes/level_generation/room/rooms/test_room_1.tscn", "res://scenes/level_generation/room/rooms/test_room_2.tscn", "res://scenes/level_generation/room/rooms/test_room_4.tscn"])
-debug_room_array = Array[String](["res://scenes/level_generation/room/rooms/test_room_2.tscn"])
+is_in_debug_mode = true
 
 [node name="DialogueController" parent="." unique_id=1384869778 instance=ExtResource("6_giy5l")]

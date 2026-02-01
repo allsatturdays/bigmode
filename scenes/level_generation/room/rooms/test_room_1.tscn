@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dvb2p3rktyxpx" path="res://assets/prototype-sprites/prototype-sprite.tres" id="4_aamm4"]
 [ext_resource type="PackedScene" uid="uid://b6sa3exvxnqm7" path="res://scenes/game_objects/end_of_room/end_of_room.tscn" id="4_uqsr4"]
 [ext_resource type="PackedScene" uid="uid://cvlr4y1vkrr3v" path="res://scenes/entities/mobs/dog_enemy/dog_enemy.tscn" id="5_v73ea"]
+[ext_resource type="PackedScene" uid="uid://c1ybtx01mjxvl" path="res://scenes/game_objects/loot/loot.tscn" id="7_nxpcs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
 size = Vector3(0.5, 1, 0.5)
@@ -83,5 +84,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 1.2461548, -8
 shape = SubResource("BoxShape3D_peyp1")
 
 [node name="DogEnemy" parent="." unique_id=1185911118 instance=ExtResource("5_v73ea")]
+
+[node name="Loot" parent="." unique_id=531469118 instance=ExtResource("7_nxpcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6318836, 0, 1)
+
+[node name="Loot2" parent="." unique_id=797116524 instance=ExtResource("7_nxpcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3249321, 0, 7.647431)
 
 [connection signal="body_entered" from="Player/HurtboxArea3D" to="Player" method="_on_hurtbox_area_3d_body_entered"]
