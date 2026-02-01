@@ -1,0 +1,14 @@
+CollisionShape3D
+Area3D
+Node3D
+MeshInstance3D
+Label
+HBoxContainer
+MarginContainer
+VBoxContainer
+AspectRatioContainer
+CanvasLayer
+Sprite3D
+AnimatedSprite3D
+StaticBody3D
+RayCast3D
