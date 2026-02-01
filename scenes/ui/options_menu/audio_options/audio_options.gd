@@ -1,6 +1,3 @@
-## Original File MIT License Copyright (c) 2024 TinyTakinTeller
-## [br][br]
-## Manages global audio options.
 extends MarginContainer
 
 var _action_handler: ActionHandler = ActionHandler.new()

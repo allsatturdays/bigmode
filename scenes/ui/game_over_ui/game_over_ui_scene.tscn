@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://2bjeo83q7mfk"]
+
+[ext_resource type="Script" uid="uid://bvm754ndm133u" path="res://scenes/ui/game_over_ui/game_over_ui.gd" id="1_xqsd1"]
+[ext_resource type="Script" uid="uid://bunnx2dkeqw5d" path="res://scenes/ui/game_over_ui/game_over_ui/game_over_ui.gd" id="2_mf4b4"]
+[ext_resource type="PackedScene" uid="uid://bea1npdsg7ii1" path="res://scenes/ui/options_menu/options_menu.tscn" id="2_nbixq"]
+[ext_resource type="PackedScene" uid="uid://cqdh08oywawux" path="res://components/builder/ui_builder/ui_builder.tscn" id="3_diamw"]
+[ext_resource type="PackedScene" uid="uid://cjidrww5kw84q" path="res://node/menu/menu_button/menu_button.tscn" id="3_y1r50"]
+[ext_resource type="PackedScene" uid="uid://cegf3gabvsje2" path="res://components/control/control_grab_focus/control_grab_focus.tscn" id="4_8kfoc"]
+
+[node name="GameOverUiScene" type="Control" unique_id=450007994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xqsd1")
+
+[node name="GameOverMenu" type="Control" parent="." unique_id=198094813]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("2_mf4b4")
+
+[node name="RootMarginContainer" type="MarginContainer" parent="GameOverMenu" unique_id=655005321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FooterMarginContainer" type="MarginContainer" parent="GameOverMenu/RootMarginContainer" unique_id=1137223085]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="FooterHBoxContainer" type="HBoxContainer" parent="GameOverMenu/RootMarginContainer/FooterMarginContainer" unique_id=655878208]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AuthorLabel" type="Label" parent="GameOverMenu/RootMarginContainer/FooterMarginContainer/FooterHBoxContainer" unique_id=533516091]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "migski"
+vertical_alignment = 1
+
+[node name="PaddingMarginContainer" type="MarginContainer" parent="GameOverMenu/RootMarginContainer/FooterMarginContainer/FooterHBoxContainer" unique_id=1660189118]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="GameOverMenu/RootMarginContainer" unique_id=1680630663]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer" unique_id=1151500959]
+layout_mode = 2
+
+[node name="MainMenuMarginContainer" type="MarginContainer" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer" unique_id=1858736291]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 48
+
+[node name="MainMenuVBoxContainer" type="VBoxContainer" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer" unique_id=1029268696]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MainMenuLabelsVBoxContainer" type="VBoxContainer" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer" unique_id=493620983]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TitleLabel" type="Label" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=1570120292]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SeparationMarginContainer" type="MarginContainer" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=132649691]
+layout_mode = 2
+
+[node name="MainMenuButtonsVBoxContainer" type="VBoxContainer" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer" unique_id=1058969369]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="PlayMenuButton" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=4948628 instance=ExtResource("3_y1r50")]
+layout_mode = 2
+text = "       RETRY       "
+id = 1
+label = "RETRY"
+
+[node name="OptionsMenuButton" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=899874871 instance=ExtResource("3_y1r50")]
+layout_mode = 2
+text = "       OPTIONS       "
+id = 2
+label = "OPTIONS"
+
+[node name="CreditsMenuButton" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=604660313 instance=ExtResource("3_y1r50")]
+visible = false
+layout_mode = 2
+text = "       CREDITS       "
+id = 3
+label = "CREDITS"
+
+[node name="QuitMenuButton" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=1633221463 instance=ExtResource("3_y1r50")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "       QUIT       "
+id = 4
+label = "QUIT"
+
+[node name="ControlGrabFocus" parent="GameOverMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=504916727 instance=ExtResource("4_8kfoc")]
+
+[node name="HeaderMarginContainer" type="MarginContainer" parent="GameOverMenu/RootMarginContainer" unique_id=1556075468]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HeaderBoxContainer" type="HBoxContainer" parent="GameOverMenu/RootMarginContainer/HeaderMarginContainer" unique_id=823364412]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="PaddingMarginContainer" type="MarginContainer" parent="GameOverMenu/RootMarginContainer/HeaderMarginContainer/HeaderBoxContainer" unique_id=751093192]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="OptionsMenu" parent="." unique_id=856836720 instance=ExtResource("2_nbixq")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="UiBuilder" parent="." unique_id=1745100880 instance=ExtResource("3_diamw")]

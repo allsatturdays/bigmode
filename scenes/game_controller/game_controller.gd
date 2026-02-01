@@ -9,6 +9,8 @@ var current_3d_scene
 var current_2d_scene
 var current_gui_scene
 
+var _action_handler: ActionHandler = ActionHandler.new()
+
 @onready var building: Building = $Building
 @onready var scene_transition = $GUI/SceneTransition
 @onready var dialogue_controller: DialogueController = $DialogueController
@@ -22,6 +24,7 @@ func _ready() -> void:
 	building.generate_rooms()
 	#current_3d_scene = $World3D/Room2
 	current_gui_scene = $GUI/MenuScene
+
 	
 
 func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
@@ -64,7 +67,8 @@ func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 
 
 func _on_player_death() -> void:
-	change_gui_scene("res://scenes/ui/game_over_ui/temp/on_death_screen.tscn", true, false)
+	change_gui_scene("res://scenes/ui/game_over_ui/game_over_ui_scene.tscn", true, false)
+	
 	
 func _on_room_complete(next_room: String) -> void:
 	await scene_transition.play_transition()

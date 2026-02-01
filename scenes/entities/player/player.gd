@@ -17,6 +17,7 @@ func _ready() -> void:
 	GameEvents.connect("on_transition_start", _on_transition_start)
 	GameEvents.connect("on_transition_complete", _on_transition_complete)
 	GameEvents.connect("on_game_start", _on_game_start)
+	GameEvents.connect("on_player_death", _on_player_death)
 	
 	position = Vector3(
 		round(position.x / grid_size) * grid_size,
@@ -101,3 +102,6 @@ func _on_transition_complete() -> void:
 	
 func _on_game_start() -> void:
 	can_control = true
+	
+func _on_player_death() -> void:
+	can_control = false

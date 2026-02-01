@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c2owjxrhgllgx"]
+
+[ext_resource type="Script" uid="uid://bymclef0albd1" path="res://scenes/ui/options_menu/control_options/controls_options.gd" id="1_g2i3h"]
+
+[node name="ControlsOptions" type="MarginContainer" unique_id=428960564]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -341.0
+offset_right = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_g2i3h")
+
+[node name="RootVBoxContainer" type="VBoxContainer" parent="." unique_id=1561951047]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KeybindsMapMarginContainer" type="MarginContainer" parent="RootVBoxContainer" unique_id=1472839797]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(650, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="RootVBoxContainer/KeybindsMapMarginContainer" unique_id=903760948]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RootVBoxContainer/KeybindsMapMarginContainer" unique_id=1983386419]
+layout_mode = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_right = 140
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer" unique_id=1862944433]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer" unique_id=135262230]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer" unique_id=1071160216]
+layout_mode = 2
+theme_override_constants/h_separation = 155
+columns = 2
+
+[node name="Label" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=354182300]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Move Forward"
+
+[node name="Label2" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1343349890]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "W"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1037078127]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Move Backward"
+
+[node name="Label4" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1047446863]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "S"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1892634389]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Move Left"
+
+[node name="Label6" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1314779666]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "A"
+horizontal_alignment = 2
+
+[node name="Label7" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1655970325]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Move Right"
+
+[node name="Label8" type="Label" parent="RootVBoxContainer/KeybindsMapMarginContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1051348181]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "D"
+horizontal_alignment = 2

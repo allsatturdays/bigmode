@@ -1,4 +1,3 @@
-## Localized button that refreshes text on language selected signal, on click emits a global signal.
 @tool
 class_name MenuButtonClass
 extends Button
@@ -42,8 +41,6 @@ func _get_button_text() -> String:
 func _connect_signals() -> void:
 	if Engine.is_editor_hint():
 		return
-
-	#SignalBus.language_changed.connect(_on_language_changed)
 
 	self.pressed.connect(_on_button_pressed)
 	self.focus_exited.connect(_on_button_focus_exited)

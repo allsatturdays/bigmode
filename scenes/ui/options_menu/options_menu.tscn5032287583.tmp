@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://bea1npdsg7ii1"]
+
+[ext_resource type="PackedScene" uid="uid://cegf3gabvsje2" path="res://components/control/control_grab_focus/control_grab_focus.tscn" id="2_bpco6"]
+[ext_resource type="Script" uid="uid://jihce4wg1b4u" path="res://scenes/ui/options_menu/options_menu.gd" id="2_jd1v2"]
+[ext_resource type="PackedScene" uid="uid://cjidrww5kw84q" path="res://node/menu/menu_button/menu_button.tscn" id="4_m78wu"]
+[ext_resource type="PackedScene" uid="uid://c2owjxrhgllgx" path="res://scenes/ui/options_menu/control_options/controls_options.tscn" id="5_7tfqe"]
+[ext_resource type="PackedScene" uid="uid://pd1a3fwjkrdl" path="res://scenes/ui/options_menu/audio_options/audio_options.tscn" id="5_kiw17"]
+
+[node name="OptionsMenu" type="Control" unique_id=856836720]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_jd1v2")
+
+[node name="RootMarginContainer" type="MarginContainer" parent="." unique_id=622997154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="RootMarginContainer" unique_id=246306336]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RootMarginContainer" unique_id=47358596]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TabMarginContainer" type="MarginContainer" parent="RootMarginContainer/VBoxContainer" unique_id=228078082]
+custom_minimum_size = Vector2(666, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="TabHBoxContainer" type="HBoxContainer" parent="RootMarginContainer/VBoxContainer/TabMarginContainer" unique_id=224833361]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AudioMenuButton" parent="RootMarginContainer/VBoxContainer/TabMarginContainer/TabHBoxContainer" unique_id=1796406676 instance=ExtResource("4_m78wu")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../../../FooterMarginContainer/HBoxContainer/ResetMenuButton")
+theme_override_font_sizes/font_size = 24
+toggle_mode = true
+button_pressed = true
+text = "   Audio   "
+id = 7
+label = "Audio"
+padding_spaces = 3
+
+[node name="ControlsMenuButton" parent="RootMarginContainer/VBoxContainer/TabMarginContainer/TabHBoxContainer" unique_id=2072965305 instance=ExtResource("4_m78wu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+toggle_mode = true
+text = "   Controls   "
+id = 9
+label = "Controls"
+padding_spaces = 3
+
+[node name="ControlGrabFocus" parent="RootMarginContainer/VBoxContainer/TabMarginContainer/TabHBoxContainer" unique_id=974729546 instance=ExtResource("2_bpco6")]
+remember_last_focus = false
+
+[node name="TabHSeparator" type="HSeparator" parent="RootMarginContainer/VBoxContainer" unique_id=846407264]
+layout_mode = 2
+
+[node name="OptionsMarginContainer" type="MarginContainer" parent="RootMarginContainer/VBoxContainer" unique_id=1616150882]
+custom_minimum_size = Vector2(666, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="OptionsVBoxContainer" type="VBoxContainer" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer" unique_id=945164991]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="AudioOptions" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer" unique_id=625984898 instance=ExtResource("5_kiw17")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSlider" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MasterMenuSlider/HBoxContainer/SliderMarginContainer/SliderVBoxContainer/SliderMarginContainer" index="0" unique_id=1488911984]
+value = 0.0
+
+[node name="HSlider" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MusicMenuSlider/HBoxContainer/SliderMarginContainer/SliderVBoxContainer/SliderMarginContainer" index="0" unique_id=1488911984]
+value = 0.0
+
+[node name="HSlider" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/SFXMenuSlider/HBoxContainer/SliderMarginContainer/SliderVBoxContainer/SliderMarginContainer" index="0" unique_id=1488911984]
+value = 0.0
+
+[node name="ControlsOptions" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer" unique_id=2063547654 instance=ExtResource("5_7tfqe")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FooterHSeparator" type="HSeparator" parent="RootMarginContainer/VBoxContainer" unique_id=302836780]
+layout_mode = 2
+
+[node name="FooterMarginContainer" type="MarginContainer" parent="RootMarginContainer/VBoxContainer" unique_id=2027981615]
+custom_minimum_size = Vector2(666, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RootMarginContainer/VBoxContainer/FooterMarginContainer" unique_id=696285489]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="BackMenuButton" parent="RootMarginContainer/VBoxContainer/FooterMarginContainer/HBoxContainer" unique_id=2084813386 instance=ExtResource("4_m78wu")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../ResetMenuButton")
+theme_override_font_sizes/font_size = 24
+text = "       Back       "
+id = 5
+label = "Back"
+
+[node name="PaddingMarginContainer" type="MarginContainer" parent="RootMarginContainer/VBoxContainer/FooterMarginContainer/HBoxContainer" unique_id=758542148]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetMenuButton" parent="RootMarginContainer/VBoxContainer/FooterMarginContainer/HBoxContainer" unique_id=773381713 instance=ExtResource("4_m78wu")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BackMenuButton")
+focus_neighbor_right = NodePath("../../../TabMarginContainer/TabHBoxContainer/AudioMenuButton")
+theme_override_font_sizes/font_size = 24
+text = "       Reset       "
+id = 6
+label = "Reset"
+
+[editable path="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions"]
+[editable path="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MasterMenuSlider"]
+[editable path="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MusicMenuSlider"]
+[editable path="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/SFXMenuSlider"]
+[editable path="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/AudioMenuToggle"]

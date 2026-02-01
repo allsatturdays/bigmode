@@ -102,7 +102,6 @@ func do_attach_components(parent: Node) -> void:
 
 		customize_component(instance, parent)
 		NodeUtils.add_child_back(instance, parent)
-		print('yes')
 
 
 func is_skip(node: Node, parent: Node) -> bool:

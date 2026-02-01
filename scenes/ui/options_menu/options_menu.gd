@@ -1,6 +1,3 @@
-## Original File MIT License Copyright (c) 2024 TinyTakinTeller
-## [br][br]
-## Holds options scenes and manages their transitions (listens to menu button pressed signal).
 class_name OptionsMenu
 extends Control
 
@@ -11,7 +8,7 @@ var _action_handler: ActionHandler = ActionHandler.new()
 
 @onready var audio_options: MarginContainer = %AudioOptions
 #@onready var video_options: MarginContainer = %VideoOptions
-#@onready var controls_options: MarginContainer = %ControlsOptions
+@onready var controls_options: MarginContainer = %ControlsOptions
 #@onready var game_options: MarginContainer = %GameOptions
 
 #@onready var game_menu_button: MenuButtonClass = %GameMenuButton
@@ -31,7 +28,7 @@ func _init_action_handler() -> void:
 		{
 			MenuButtonEnum.ID.OPTIONS_MENU_AUDIO_TAB: _action_audio_menu_button,
 			#MenuButtonEnum.ID.OPTIONS_MENU_VIDEO_TAB: _action_video_menu_button,
-			#MenuButtonEnum.ID.OPTIONS_MENU_CONTROLS_TAB: _action_controls_menu_button,
+			MenuButtonEnum.ID.OPTIONS_MENU_CONTROLS_TAB: _action_controls_menu_button,
 			#MenuButtonEnum.ID.OPTIONS_MENU_GAME_TAB: _action_game_menu_button
 		}
 	)
@@ -45,8 +42,8 @@ func _action_audio_menu_button(source: MenuButtonClass) -> void:
 	#_toggle_options(video_options, source)
 #
 #
-#func _action_controls_menu_button(source: MenuButtonClass) -> void:
-	#_toggle_options(controls_options, source)
+func _action_controls_menu_button(source: MenuButtonClass) -> void:
+	_toggle_options(controls_options, source)
 #
 #
 #func _action_game_menu_button(source: MenuButtonClass) -> void:
