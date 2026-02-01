@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://bk4ex2rnrii2x"]
 
 [ext_resource type="Script" uid="uid://ch3h786r7ac6d" path="res://scenes/game_controller/game_controller.gd" id="1_xa5k5"]
-[ext_resource type="PackedScene" uid="uid://lc37mujcfol1" path="res://scenes/level_generation/room/rooms/test_room_4.tscn" id="2_gupwa"]
-[ext_resource type="PackedScene" uid="uid://d16vus1j4ktbv" path="res://scenes/ui/main_menu/temp/temp_main_menu.tscn" id="3_gupwa"]
 [ext_resource type="PackedScene" uid="uid://cydsxqrhewue4" path="res://scenes/level_generation/building/building.tscn" id="3_ubedv"]
+[ext_resource type="PackedScene" uid="uid://c7fb6bucs6ey3" path="res://scenes/ui/main_menu/menu_scene.tscn" id="4_giy5l"]
 [ext_resource type="PackedScene" uid="uid://daw4oh1hf2c0e" path="res://scenes/ui/scene_transition/scene_transition.tscn" id="4_s8vvr"]
 [ext_resource type="PackedScene" uid="uid://dlocyykllqupr" path="res://scenes/dialogue_controller/dialogue_controller.tscn" id="6_giy5l"]
 
@@ -30,17 +29,18 @@ sky_mode = 1
 
 [node name="World3D" type="Node3D" parent="." unique_id=1206072884]
 
-[node name="Room2" parent="World3D" unique_id=1994244316 instance=ExtResource("2_gupwa")]
-
 [node name="World2D" type="Node2D" parent="." unique_id=271297995]
 
 [node name="GUI" type="Control" parent="." unique_id=48497527]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MainMenu" parent="GUI" unique_id=535196375 instance=ExtResource("3_gupwa")]
+[node name="MenuScene" parent="GUI" unique_id=888017440 instance=ExtResource("4_giy5l")]
+layout_mode = 1
 
 [node name="SceneTransition" parent="GUI" unique_id=1565235032 instance=ExtResource("4_s8vvr")]
 

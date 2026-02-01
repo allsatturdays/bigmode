@@ -1,4 +1,3 @@
-# Uses a tween to animate some properties of given target nodes.
 class_name Motion
 extends Node
 
@@ -7,7 +6,8 @@ signal motion_end
 @export_category("Target")
 @export var target_children: bool = false
 @export var targets: Array[Node] = []
-
+## If larger than 0, sets target to "parent of the parent" ... (that many levels upwards).
+## Still keeps triggers of "original target" (level 0).
 @export var offset_target_level: int = 0
 
 @export_category("Triggers")
@@ -22,6 +22,7 @@ signal motion_end
 @export var center_pivot: bool = false
 
 @export_category("Tween")
+## See: https://www.reddit.com/r/godot/comments/14gt180
 @export var transition_type: Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
 @export var ease_type: Tween.EaseType = Tween.EaseType.EASE_IN
 
@@ -62,6 +63,7 @@ func add_motion(motion_factor_increment: float = add_motion_default) -> void:
 		motion_factor_increment = max_motion_factor
 
 	if _is_targets_empty():
+		#LogWrapper.debug(self, "No targets set.")
 		return
 
 	if motion_factor_increment > 0:

@@ -7,7 +7,7 @@
 [node name="UiBuilder" type="Node" unique_id=1745100880]
 script = ExtResource("1_lkrrc")
 not_condition_properties = {
-"\"focus_mode\"": 0
+"focus_mode": 0
 }
 attach_components = Array[PackedScene]([ExtResource("3_vbux7"), ExtResource("3_7t4su")])
 metadata/_custom_type_script = "uid://lqr58tjov26w"

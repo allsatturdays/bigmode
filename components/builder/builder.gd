@@ -93,7 +93,6 @@ func is_matching_condition_properties(node: Node) -> bool:
 
 
 func do_attach_components(parent: Node) -> void:
-	print('done')
 	_attach_count += 1
 
 	for component: PackedScene in attach_components:
@@ -103,6 +102,7 @@ func do_attach_components(parent: Node) -> void:
 
 		customize_component(instance, parent)
 		NodeUtils.add_child_back(instance, parent)
+		print('yes')
 
 
 func is_skip(node: Node, parent: Node) -> bool:

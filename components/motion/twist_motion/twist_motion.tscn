@@ -4,4 +4,9 @@
 
 [node name="TwistMotion" type="Node" unique_id=798735239]
 script = ExtResource("1_r8c8w")
+trigger_signals = Array[String](["focus_entered", "mouse_entered"])
+max_motion_factor = 0.95
+center_pivot = true
+transition_type = 9
+ease_type = 1
 metadata/_custom_type_script = "uid://bw10ef5isykje"

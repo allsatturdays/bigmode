@@ -20,7 +20,8 @@ func _ready() -> void:
 	GameEvents.connect("on_room_complete", _on_room_complete)
 	Main.game_controller = self
 	building.generate_rooms()
-	current_3d_scene = $World3D/Room2
+	#current_3d_scene = $World3D/Room2
+	current_gui_scene = $GUI/MenuScene
 	
 
 func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
@@ -63,7 +64,7 @@ func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 
 
 func _on_player_death() -> void:
-	change_gui_scene("res://scenes/ui/game_over_ui/on_death_screen.tscn", true, false)
+	change_gui_scene("res://scenes/ui/game_over_ui/temp/on_death_screen.tscn", true, false)
 	
 func _on_room_complete(next_room: String) -> void:
 	await scene_transition.play_transition()
