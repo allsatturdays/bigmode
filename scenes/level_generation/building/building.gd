@@ -4,32 +4,32 @@ class_name Building
 @export var room_array: Array[String]
 @export var debug_room_array: Array[String]
 @export var is_in_debug_mode: bool = false
+@export var next_building_path: String
+@export var building_start_dialogue: DialogueResource
+@export var background_color: Color
 
 var rooms: Array[String] = []
+var current_room: int
 
-var current_room: int = 2
+func _ready():
+	generate_rooms()
+	current_room = room_array.size() - 1
 
 func generate_rooms() -> void:
 	if is_in_debug_mode:
-		rooms = []
-		rooms.push_front(debug_room_array.pick_random())
-		rooms.push_front(debug_room_array.pick_random())
-		rooms.push_front(debug_room_array.pick_random())
+		rooms = debug_room_array
 		current_room = rooms.size()-1
 	else:
-		rooms = []
-		rooms.push_front(room_array.pick_random())
-		rooms.push_front(room_array.pick_random())
-		rooms.push_front(room_array.pick_random())
+		rooms = room_array
 		current_room = rooms.size()-1
-		print(rooms)
 
 func next_room() -> String:
 	if current_room == 0:
 		GameEvents.on_building_complete.emit()
-		generate_rooms()
-		return rooms[current_room]
+		return Main.game_controller.change_building_scene(next_building_path, true, false)
+
 	else:
 		current_room -= 1
 		return rooms[current_room]
+	
 		

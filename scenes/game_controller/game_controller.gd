@@ -4,16 +4,20 @@ class_name GameController
 @export var world_3d: Node3D
 @export var world_2d: Node2D
 @export var gui: Control
+@export var building_container: Node
 
 var current_3d_scene
 var current_2d_scene
 var current_gui_scene
+var current_building: Building
+var next_room_path: String
 
 var _action_handler: ActionHandler = ActionHandler.new()
 
-@onready var building: Building = $Building
+
 @onready var scene_transition = $GUI/SceneTransition
 @onready var dialogue_controller: DialogueController = $DialogueController
+@onready var environment: WorldEnvironment = $Environment/WorldEnvironment
 
 
 
@@ -21,9 +25,10 @@ func _ready() -> void:
 	GameEvents.connect("on_player_death", _on_player_death)
 	GameEvents.connect("on_room_complete", _on_room_complete)
 	Main.game_controller = self
-	building.generate_rooms()
-	#current_3d_scene = $World3D/Room2
 	current_gui_scene = $GUI/MenuScene
+	current_building = $BuildingContainer/Building
+	current_building.generate_rooms()
+	
 
 	
 
@@ -38,7 +43,23 @@ func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool
 	var new = load(new_scene).instantiate()
 	gui.add_child(new)
 	current_gui_scene = new
+
+
+func change_building_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> String:
+	if current_building != null:
+		if delete:
+			current_building.queue_free()
+		elif keep_running:
+			current_building.visible = false
+		else:
+			building_container.remove_child(current_building)
+	var new = load(new_scene).instantiate()
+	building_container.add_child(new)
+	current_building = new
+	next_room_path = current_building.rooms[current_building.current_room]
+	environment.environment.background_color = current_building.background_color
 	
+	return next_room_path
 	
 func change_3d_scene(new_scene: String, delete: bool = true, keep_running: bool = false )-> void:
 	if current_3d_scene != null:

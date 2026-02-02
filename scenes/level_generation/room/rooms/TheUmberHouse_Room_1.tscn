@@ -27,7 +27,7 @@ metadata/_editor_floor_ = Vector3(0, -5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3818626, 0.3567524, -5.087127)
 
 [node name="EndOfRoom" parent="." unique_id=1757221878 instance=ExtResource("4_k27my")]
-transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 7.544306, 0, 0.022887707)
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 7.690606, 0.11740178, -0.9155514)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=33233988]
 transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)

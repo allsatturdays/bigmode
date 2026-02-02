@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bto5opvdxvdel"]
+
+[ext_resource type="Script" uid="uid://1kyt7dg0og7n" path="res://scenes/level_generation/building/building.gd" id="1_0cdwr"]
+[ext_resource type="Resource" uid="uid://fseb8vajggds" path="res://resources/dialogue/test.dialogue" id="2_ivb2r"]
+
+[node name="BuildingTheGildedMansion" type="Node" unique_id=1276131247]
+script = ExtResource("1_0cdwr")
+building_complete_dialogue = ExtResource("2_ivb2r")
+metadata/_custom_type_script = "uid://1kyt7dg0og7n"

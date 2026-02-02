@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _on_static_body_3d_body_entered(body):
 	if body.is_in_group("player") and is_active:
-		GameEvents.on_room_complete.emit(Main.game_controller.building.next_room())
+		GameEvents.on_room_complete.emit(Main.game_controller.current_building.next_room())
 
 func _on_player_death() -> void:
 	is_active = false
