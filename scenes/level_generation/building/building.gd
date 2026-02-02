@@ -21,7 +21,7 @@ func generate_rooms() -> void:
 	else:
 		rooms = room_array
 		current_room = rooms.size()-1
-	current_room = room_array.size() - 1
+	#current_room = room_array.size() - 1
 
 func next_room() -> String:
 	if current_room == 0:

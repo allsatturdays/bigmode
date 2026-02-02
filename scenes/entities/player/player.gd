@@ -1,13 +1,17 @@
 extends CharacterBody3D
 
-@export var dash_speed: float = 60.0 * .7
+@export var dash_speed: float = 60.0 * .5
 @export var grid_size: float = .5
 @export var new_room_control_freeze_time: float = .5 
+@export var move_buffer_timer: float = .2
 
+var move_buffer: bool = false
 var can_control: bool = false
 var is_dashing: bool = false
 var dash_direction: Vector3 = Vector3.ZERO
 var target_position: Vector3 = Vector3.ZERO
+var input_dir: Vector3 = Vector3.ZERO
+var buffer_dir: Vector3 = Vector3.ZERO
 
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 
@@ -29,38 +33,74 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not can_control:
 		return
+		
+		
 	if is_dashing:
 		velocity = dash_direction * dash_speed
 		move_and_slide()
 		
+		# movement stopped
 		if get_slide_collision_count() > 0:
+			# snap to grid	
 			position = Vector3(
 				round(position.x / grid_size) * grid_size,
 				position.y,
 				round(position.z / grid_size) * grid_size
 			)
-			
-			is_dashing = false
-			sprite.play("default")
-			velocity = Vector3.ZERO
-	else:
-		var input_dir = Vector3.ZERO
+			# move buffer handle
+			print(move_buffer)
+			if buffer_dir != dash_direction and move_buffer:
+				if buffer_dir != Vector3.ZERO and can_move_in_direction(input_dir):
+					print('move buffer success: ', buffer_dir)
+					move(buffer_dir)
+					move_buffer = false
+					
+			else:
+				is_dashing = false
+				sprite.play("default")
+				velocity = Vector3.ZERO
+	
+	
+	#if move_buffer == true:
+		#print(input_dir)
+		#if input_dir != Vector3.ZERO and can_move_in_direction(input_dir):
+			#print('move buffer success: ', input_dir)
+			#move()
+			#move_buffer = false
+
+	input_dir = Vector3.ZERO
+	
+	if Input.is_action_just_pressed("move_up"):
+		input_dir = Vector3.FORWARD  
 		
-		if Input.is_action_just_pressed("move_up"):
-			input_dir = Vector3.FORWARD  
-			
-		elif Input.is_action_just_pressed("move_down"):
-			input_dir = Vector3.BACK
-			
-		elif Input.is_action_just_pressed("move_left"):
-			input_dir = Vector3.LEFT
-			
-		elif Input.is_action_just_pressed("move_right"):
-			input_dir = Vector3.RIGHT
-			
-		if input_dir != Vector3.ZERO and can_move_in_direction(input_dir) and can_control:
-			start_dash(input_dir)
-			GameEvents.on_player_move.emit(position, position + input_dir)
+	elif Input.is_action_just_pressed("move_down"):
+		input_dir = Vector3.BACK
+		
+	elif Input.is_action_just_pressed("move_left"):
+		input_dir = Vector3.LEFT
+		
+	elif Input.is_action_just_pressed("move_right"):
+		input_dir = Vector3.RIGHT
+	
+	#if input_dir != Vector3.ZERO and can_move_in_direction(input_dir) and can_control:
+		#start_dash(input_dir)
+		#GameEvents.on_player_move.emit(position, position + input_dir)
+
+	if input_dir != Vector3.ZERO:
+		if !is_dashing and can_move_in_direction(input_dir):
+			move(input_dir)
+		else:
+			print(input_dir)
+			buffer_dir = input_dir
+			move_buffer = true
+			get_tree().create_timer(move_buffer_timer).timeout.connect(_on_move_buffer_timeout)
+	
+	
+
+func move(dir: Vector3) -> void:
+	start_dash(dir)
+	
+
 
 func start_dash(direction: Vector3) -> void:
 	sprite.play("dash")
@@ -76,6 +116,7 @@ func start_dash(direction: Vector3) -> void:
 	if result.is_empty():
 		is_dashing = true
 		dash_direction = direction
+		GameEvents.on_player_move.emit(position, position + input_dir)
 
 # Helper function to check if can move in a direction
 func can_move_in_direction(direction: Vector3) -> bool:
@@ -105,4 +146,7 @@ func _on_game_start() -> void:
 	
 func _on_player_death() -> void:
 	can_control = false
+	
+func _on_move_buffer_timeout() -> void:
+	move_buffer = false
 	
