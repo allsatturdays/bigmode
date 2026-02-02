@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var dash_speed: float = 60.0
+@export var dash_speed: float = 60.0 * .7
 @export var grid_size: float = .5
 @export var new_room_control_freeze_time: float = .5 
 
@@ -105,3 +105,4 @@ func _on_game_start() -> void:
 	
 func _on_player_death() -> void:
 	can_control = false
+	

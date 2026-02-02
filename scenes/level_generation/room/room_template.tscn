@@ -28,6 +28,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.35
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=33233988]
 transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
+visible = false
 projection = 1
 size = 15.366299
 

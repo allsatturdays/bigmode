@@ -11,7 +11,7 @@ script = ExtResource("1_shj6b")
 label = "music"
 bus = "Music"
 tracks = {
-"bgm": "res://assets/audio/temp/Superstition DnB track WIP v2.mp3"
+"bgm": "res://assets/audio/temp/game jam draft 2.mp3"
 }
 
 [node name="SoundBank" parent="." unique_id=891959644 instance=ExtResource("2_ild0q")]

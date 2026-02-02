@@ -5,6 +5,7 @@ class_name GameController
 @export var world_2d: Node2D
 @export var gui: Control
 @export var building_container: Node
+@export var first_building_path: String
 
 var current_3d_scene
 var current_2d_scene
@@ -18,7 +19,7 @@ var _action_handler: ActionHandler = ActionHandler.new()
 @onready var scene_transition = $GUI/SceneTransition
 @onready var dialogue_controller: DialogueController = $DialogueController
 @onready var environment: WorldEnvironment = $Environment/WorldEnvironment
-
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -92,5 +93,11 @@ func _on_player_death() -> void:
 	
 	
 func _on_room_complete(next_room: String) -> void:
-	await scene_transition.play_transition()
+	scene_transition.play_transition()
+	play_spin_anim()
+	#scene_transition.play_transition()
 	change_3d_scene(next_room, true, false)
+	
+
+func play_spin_anim()-> void:
+	anim_player.play("spin")

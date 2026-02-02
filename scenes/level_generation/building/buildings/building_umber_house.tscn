@@ -5,8 +5,8 @@
 
 [node name="BuildingUmberHouse" type="Node" unique_id=1135907331]
 script = ExtResource("1_nqxyn")
-room_array = Array[String](["res://scenes/level_generation/room/rooms/TheUmberHouse_Room_1.tscn", "res://scenes/level_generation/room/rooms/TheUmberHouse_Room_2.tscn", "res://scenes/level_generation/room/rooms/TheUmberHouse_Room_3.tscn", "res://scenes/level_generation/room/rooms/TheUmberHouse_Room_4.tscn", "res://scenes/level_generation/room/rooms/TheUmberHouse_Room_5.tscn"])
-next_building_path = "res://scenes/level_generation/building/building.tscn"
+room_array = Array[String](["res://scenes/level_generation/room/rooms/05_TheUmberHouse_Room_5.tscn", "res://scenes/level_generation/room/rooms/04_TheUmberHouse_Room_4.tscn", "res://scenes/level_generation/room/rooms/03_TheUmberHouse_Room_3.tscn", "res://scenes/level_generation/room/rooms/02_TheUmberHouse_Room_2.tscn", "res://scenes/level_generation/room/rooms/01_TheUmberHouse_Room_1.tscn"])
+next_building_path = "res://scenes/level_generation/building/buildings/building_the_gilded_mansion.tscn"
 building_start_dialogue = ExtResource("2_wdjyr")
 background_color = Color(0, 0.18039216, 0, 1)
 metadata/_custom_type_script = "uid://1kyt7dg0og7n"

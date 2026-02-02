@@ -5,5 +5,8 @@
 
 [node name="BuildingTheGildedMansion" type="Node" unique_id=1276131247]
 script = ExtResource("1_0cdwr")
-building_complete_dialogue = ExtResource("2_ivb2r")
+room_array = Array[String](["res://scenes/level_generation/room/rooms/11_TheGildedMansion_Room_6.tscn", "res://scenes/level_generation/room/rooms/10_TheGildedMansion_Room_5.tscn", "res://scenes/level_generation/room/rooms/09_TheGildedMansion_Room_4.tscn", "res://scenes/level_generation/room/rooms/08_TheGildedMansion_Room_3.tscn", "res://scenes/level_generation/room/rooms/07_TheGildedMansion_Room_2.tscn", "res://scenes/level_generation/room/rooms/06_TheGildedMansion_Room_1.tscn"])
+next_building_path = "res://scenes/level_generation/building/building.tscn"
+building_start_dialogue = ExtResource("2_ivb2r")
+background_color = Color(0.25882354, 0, 0, 1)
 metadata/_custom_type_script = "uid://1kyt7dg0og7n"

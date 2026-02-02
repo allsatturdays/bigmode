@@ -13,7 +13,6 @@ var current_room: int
 
 func _ready():
 	generate_rooms()
-	current_room = room_array.size() - 1
 
 func generate_rooms() -> void:
 	if is_in_debug_mode:
@@ -22,6 +21,7 @@ func generate_rooms() -> void:
 	else:
 		rooms = room_array
 		current_room = rooms.size()-1
+	current_room = room_array.size() - 1
 
 func next_room() -> String:
 	if current_room == 0:

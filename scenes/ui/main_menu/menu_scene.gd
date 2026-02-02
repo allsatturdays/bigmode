@@ -45,6 +45,7 @@ func _init_action_handler() -> void:
 func _action_main_menu_play() -> void:
 	AudioManager.stop_music()
 	await get_tree().create_timer(.5).timeout
+	AudioManager.play_music(AudioEnum.Music.BGM)
 	#Main.game_controller.change_gui_scene("res://scenes/ui/scene_transition/scene_transition.tscn", true, false)
 	#Main.game_controller.building.generate_rooms()
 	Main.game_controller.change_3d_scene(Main.game_controller.current_building.rooms[Main.game_controller.current_building.current_room], true, false)

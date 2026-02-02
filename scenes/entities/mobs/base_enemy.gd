@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 	# Connect to the GameEvents signal
 	GameEvents.on_player_move.connect(_on_player_move)
+	GameEvents.on_player_death.connect(_on_player_death)
 
 # Override this method in child classes for different behaviors
 func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
@@ -67,3 +68,6 @@ func can_move_in_direction(direction: Vector3) -> bool:
 	
 	var result = space_state.intersect_ray(query)
 	return result.is_empty()
+	
+func _on_player_death()-> void:
+	pass

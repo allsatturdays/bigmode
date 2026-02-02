@@ -11,12 +11,52 @@ background_mode = 1
 background_color = Color(0.011310841, 0.03504212, 0.14568189, 1)
 sdfgi_enabled = true
 
+[sub_resource type="Animation" id="Animation_c4mfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("World3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mras5"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("World3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sgk5"]
+_data = {
+&"RESET": SubResource("Animation_c4mfo"),
+&"spin": SubResource("Animation_mras5")
+}
+
 [node name="GameController" type="Node" unique_id=507247862 node_paths=PackedStringArray("world_3d", "world_2d", "gui", "building_container")]
 script = ExtResource("1_xa5k5")
 world_3d = NodePath("World3D")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 building_container = NodePath("BuildingContainer")
+first_building_path = "res://scenes/level_generation/building/building.tscn"
+
+[node name="World3D" type="Node3D" parent="." unique_id=1206072884]
 
 [node name="Environment" type="Node3D" parent="." unique_id=2093011291]
 
@@ -28,7 +68,11 @@ transform = Transform3D(1, 0, 0, 0, 0.87191546, 0.4896564, 0, -0.4896564, 0.8719
 light_energy = 0.3
 sky_mode = 1
 
-[node name="World3D" type="Node3D" parent="." unique_id=1206072884]
+[node name="Camera3D" type="Camera3D" parent="Environment" unique_id=1910717525]
+transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
+projection = 1
+current = true
+size = 20.0
 
 [node name="World2D" type="Node2D" parent="." unique_id=271297995]
 
@@ -50,4 +94,6 @@ layout_mode = 1
 [node name="BuildingContainer" type="Node" parent="." unique_id=736542328]
 
 [node name="Building" parent="BuildingContainer" unique_id=688169817 instance=ExtResource("3_ubedv")]
-room_array = Array[String](["res://scenes/level_generation/room/room_template.tscn", "res://scenes/level_generation/room/rooms/test_room_1.tscn", "res://scenes/level_generation/room/rooms/test_room_2.tscn", "res://scenes/level_generation/room/rooms/test_room_4.tscn"])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=873616486]
+libraries/ = SubResource("AnimationLibrary_3sgk5")

@@ -49,9 +49,12 @@ func _action_game_over_menu_options() -> void:
 func _action_game_over_menu_play() -> void:
 	AudioManager.stop_music()
 	await get_tree().create_timer(.5).timeout
+	AudioManager.play_music(AudioEnum.Music.BGM)
 	#Main.game_controller.change_gui_scene("res://scenes/ui/scene_transition/scene_transition.tscn", true, false)
-	Main.game_controller.building.generate_rooms()
-	Main.game_controller.change_3d_scene(Main.game_controller.building.rooms[Main.game_controller.building.current_room], true, false)
+	Main.game_controller.play_spin_anim()
+	Main.game_controller.change_building_scene(Main.game_controller.first_building_path, true, false)
+	Main.game_controller.current_building.generate_rooms()
+	Main.game_controller.change_3d_scene(Main.game_controller.current_building.rooms[Main.game_controller.current_building.current_room], true, false)
 	Main.game_controller.change_gui_scene("res://scenes/ui/score_ui/score_ui.tscn", true, false)
 	GameEvents.on_game_start.emit()
 
