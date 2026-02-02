@@ -8,7 +8,7 @@
 
 [sub_resource type="Environment" id="Environment_tf5t3"]
 background_mode = 1
-background_color = Color(0.020582587, 0.10678279, 0.25383705, 1)
+background_color = Color(0.011310841, 0.03504212, 0.14568189, 1)
 sdfgi_enabled = true
 
 [node name="GameController" type="Node" unique_id=507247862 node_paths=PackedStringArray("world_3d", "world_2d", "gui")]
