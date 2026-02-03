@@ -95,7 +95,6 @@ layout_mode = 1
 
 [node name="Building" parent="BuildingContainer" unique_id=688169817 instance=ExtResource("3_ubedv")]
 debug_room_array = Array[String](["res://scenes/level_generation/room/rooms/test_room_2.tscn"])
-is_in_debug_mode = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=873616486]
 libraries/ = SubResource("AnimationLibrary_3sgk5")

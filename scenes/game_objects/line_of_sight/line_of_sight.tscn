@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bop6mhc2p08df"]
+
+[ext_resource type="Script" uid="uid://bupgigvlkaqkn" path="res://scenes/game_objects/line_of_sight/line_of_sight.gd" id="1_u1dai"]
+
+[node name="LineOfSight" type="MeshInstance3D" unique_id=304275399]
+script = ExtResource("1_u1dai")

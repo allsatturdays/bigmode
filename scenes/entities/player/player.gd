@@ -48,17 +48,16 @@ func _physics_process(delta: float) -> void:
 				round(position.z / grid_size) * grid_size
 			)
 			# move buffer handle
-			print(move_buffer)
-			if buffer_dir != dash_direction and move_buffer:
-				if buffer_dir != Vector3.ZERO and can_move_in_direction(input_dir):
-					print('move buffer success: ', buffer_dir)
-					move(buffer_dir)
-					move_buffer = false
-					
-			else:
-				is_dashing = false
-				sprite.play("default")
-				velocity = Vector3.ZERO
+			if can_move_in_direction(input_dir):
+				if buffer_dir != dash_direction and move_buffer:
+					if buffer_dir != Vector3.ZERO:
+						move(buffer_dir)
+						move_buffer = false
+						
+				else:
+					is_dashing = false
+					sprite.play("default")
+					velocity = Vector3.ZERO
 	
 	
 	#if move_buffer == true:
@@ -81,16 +80,11 @@ func _physics_process(delta: float) -> void:
 		
 	elif Input.is_action_just_pressed("move_right"):
 		input_dir = Vector3.RIGHT
-	
-	#if input_dir != Vector3.ZERO and can_move_in_direction(input_dir) and can_control:
-		#start_dash(input_dir)
-		#GameEvents.on_player_move.emit(position, position + input_dir)
 
 	if input_dir != Vector3.ZERO:
 		if !is_dashing and can_move_in_direction(input_dir):
 			move(input_dir)
 		else:
-			print(input_dir)
 			buffer_dir = input_dir
 			move_buffer = true
 			get_tree().create_timer(move_buffer_timer).timeout.connect(_on_move_buffer_timeout)
