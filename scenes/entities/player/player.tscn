@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://evwg3pin3mdn" path="res://scenes/entities/player/player.gd" id="1_symyc"]
 [ext_resource type="SpriteFrames" uid="uid://dvb2p3rktyxpx" path="res://assets/prototype-sprites/prototype-sprite.tres" id="2_635qg"]
+[ext_resource type="AudioStream" uid="uid://d311k72agdd1j" path="res://assets/audio/sfx/SFX-01 – Lateral Movement v1_.wav" id="3_bjvvg"]
+[ext_resource type="AudioStream" uid="uid://b6hkuvd8vxhwl" path="res://assets/audio/sfx/SFX-02 – Lateral Movement v2_.wav" id="4_8akj5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
 size = Vector3(0.8635254, 1, 0.74487305)
@@ -10,6 +12,12 @@ size = Vector3(0.8635254, 1, 0.74487305)
 size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1hmtu"]
+size = Vector3(1.2, 1, 1.2)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1murt"]
+streams_count = 2
+stream_0/stream = ExtResource("3_bjvvg")
+stream_1/stream = ExtResource("4_8akj5")
 
 [node name="Player" type="CharacterBody3D" unique_id=2141726005 groups=["player"]]
 collision_layer = 3
@@ -31,9 +39,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54079795, 0)
 shape = SubResource("BoxShape3D_1hmtu")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=819043581]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.7902682, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.62278056, 0)
 billboard = 1
 sprite_frames = ExtResource("2_635qg")
-frame_progress = 0.39577526
+frame_progress = 0.67219067
+
+[node name="sfx_player" type="AudioStreamPlayer" parent="." unique_id=402958733]
+stream = SubResource("AudioStreamRandomizer_1murt")
 
 [connection signal="body_entered" from="HurtboxArea3D" to="." method="_on_hurtbox_area_3d_body_entered"]

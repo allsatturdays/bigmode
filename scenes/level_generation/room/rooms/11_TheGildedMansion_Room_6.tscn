@@ -7,15 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://c4rtfas68em2a" path="res://assets/prototype-assets/door.glb" id="5_1pbf8"]
 [ext_resource type="PackedScene" uid="uid://de7g0doyiefsq" path="res://scenes/game_objects/greyboxing-meshes/box_wide_2.tscn" id="6_vaal8"]
 [ext_resource type="PackedScene" uid="uid://dy3ubmr44plvy" path="res://assets/prototype-assets/box-small.glb" id="7_2gsgv"]
+[ext_resource type="PackedScene" uid="uid://c1ybtx01mjxvl" path="res://scenes/game_objects/loot/loot.tscn" id="7_vaal8"]
+[ext_resource type="PackedScene" uid="uid://butjw53kdjsei" path="res://scenes/game_objects/level_wall/both_walls.tscn" id="9_2gsgv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_peyp1"]
 size = Vector3(1, 3.5, 16.5)
 
 [node name="Room" type="Node3D" unique_id=618092124]
 script = ExtResource("1_w8xlt")
+num_loot = 3
 
 [node name="GridMap" type="GridMap" parent="." unique_id=110283209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+visible = false
 mesh_library = ExtResource("2_enwq2")
 cell_size = Vector3(0.5, 0.25, 0.5)
 data = {
@@ -28,11 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.638618, 0, -5.785575)
 
 [node name="EndOfRoom" parent="." unique_id=1757221878 instance=ExtResource("4_y20wu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6695046, 0, 0.009073377)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=33233988]
-transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
-projection = 1
-size = 15.366299
 
 [node name="RoomBoundaries" type="Node3D" parent="." unique_id=657348369]
 
@@ -101,11 +100,25 @@ transform = Transform3D(3.402126, 0, 0, 0, 1.3986032, 0, 0, 0, 2.619109, -3.6729
 [node name="box-wide48" parent="." unique_id=1596739784 instance=ExtResource("6_vaal8")]
 transform = Transform3D(2.4510047, 0, 0, 0, 1.3986032, 0, 0, 0, 1.4005029, -3.5602503, 0.6935923, 2.3077755)
 
+[node name="Loot2" parent="." unique_id=531469118 instance=ExtResource("7_vaal8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42064667, -0.125, -1.9236882)
+
 [node name="box-small2" parent="." unique_id=250086881 instance=ExtResource("7_2gsgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42064667, -0.125, -1.9236882)
+visible = false
+
+[node name="Loot3" parent="." unique_id=1480480560 instance=ExtResource("7_vaal8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0674396, -0.125, -1.9236882)
 
 [node name="box-small4" parent="." unique_id=1401509067 instance=ExtResource("7_2gsgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0674396, -0.125, -1.9236882)
+visible = false
+
+[node name="Loot" parent="." unique_id=438418154 instance=ExtResource("7_vaal8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7404447, -0.125, -6.932067)
 
 [node name="box-small3" parent="." unique_id=1876613146 instance=ExtResource("7_2gsgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7404447, -0.125, -6.932067)
+visible = false
+
+[node name="Node3D" parent="." unique_id=924826197 instance=ExtResource("9_2gsgv")]

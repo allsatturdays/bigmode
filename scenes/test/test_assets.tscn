@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dcigyy08qh5ey"]
+
+[ext_resource type="Texture2D" uid="uid://ck7ajxfw63xvc" path="res://assets/prototype-sprites/ground_umber_house.png" id="1_2ovcv"]
+[ext_resource type="Texture2D" uid="uid://dstrqdnrod6dk" path="res://assets/prototype-sprites/wall_umber_house.png" id="2_7gyrm"]
+[ext_resource type="Texture2D" uid="uid://brlsnn1fahw33" path="res://assets/prototype-sprites/leel_stuff_umber_house.png" id="3_1w2e5"]
+
+[node name="TestAssets" type="Node2D" unique_id=1388866980]
+
+[node name="Env" type="Node2D" parent="." unique_id=973628335]
+
+[node name="Ground" type="Sprite2D" parent="Env" unique_id=325650393]
+texture = ExtResource("1_2ovcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Env" unique_id=808808428]
+texture = ExtResource("2_7gyrm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Env" unique_id=1979212077]
+texture = ExtResource("3_1w2e5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Env/Sprite2D2" unique_id=714735087]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/Sprite2D2/StaticBody2D" unique_id=717765050]
+position = Vector2(5, -50)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=86189154]

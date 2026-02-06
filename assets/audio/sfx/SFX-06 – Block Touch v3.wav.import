@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dm1u8dyc76vrb"
+path="res://.godot/imported/SFX-06 – Block Touch v3.wav-cb024591457cbf6ab1c818e25d063d0b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/SFX-06 – Block Touch v3.wav"
+dest_files=["res://.godot/imported/SFX-06 – Block Touch v3.wav-cb024591457cbf6ab1c818e25d063d0b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

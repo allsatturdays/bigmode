@@ -1,20 +1,15 @@
 extends BaseEnemy
-class_name StepperEnemy
+class_name DogEnemy
 
 var MOVE_SPEED = 30.0  # Faster speed for quick discrete movement
 @export var steps_per_turn: int = 8  # Number of grid spaces to move
 
 var target_position: Vector3 = Vector3.ZERO
+@onready var dog_audio_stream_player: AudioStreamPlayer = $DogAudioStreamPlayer
 
-func _ready():
-	position = Vector3(
-		round(position.x / GRID_SIZE) * GRID_SIZE,
-		position.y,
-		round(position.z / GRID_SIZE) * GRID_SIZE
-	)
+
+func enemy_ready():
 	target_position = position
-	
-	GameEvents.on_player_move.connect(_on_player_move)
 
 func _physics_process(delta):
 	if is_moving:
@@ -38,6 +33,7 @@ func _physics_process(delta):
 			is_moving = false
 		else:
 			# Continue moving
+			dog_audio_stream_player.play()
 			move_and_slide()
 			
 			# Check for collision

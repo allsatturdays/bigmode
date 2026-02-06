@@ -36,6 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -3)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=986497913]
 transform = Transform3D(-0.75754946, 0.58918744, -0.28102848, 0, 0.43051168, 0.902585, 0.65277785, 0.6837528, -0.32613388, -2.8029456, 24.320776, -6.568623)
+projection = 1
 
 [node name="MeshInstance3D" parent="Camera3D" unique_id=1324492081 instance=ExtResource("4_8v6m1")]
 transform = Transform3D(0.99995583, -0.006234299, 0.0069439546, 0.00637421, 0.99977326, -0.02031242, -0.006815746, 0.020355804, 0.9997691, 0.15504003, 0.2526698, -0.24740219)

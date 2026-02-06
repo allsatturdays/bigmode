@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byj2rrtn2xd5c"
+path="res://.godot/imported/UI-05 - keyboard dialogue.wav-152fc3f47cc06c8eefe402578b2a9585.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/UI-05 - keyboard dialogue.wav"
+dest_files=["res://.godot/imported/UI-05 - keyboard dialogue.wav-152fc3f47cc06c8eefe402578b2a9585.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

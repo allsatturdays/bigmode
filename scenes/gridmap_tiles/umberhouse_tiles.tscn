@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://gr8aty44p83k"]
+
+[ext_resource type="PackedScene" uid="uid://cmlxqe07gafe6" path="res://assets/umberhouse_assets/bigmode_wall.glb" id="1_hs2co"]
+[ext_resource type="PackedScene" uid="uid://yc6kv4ahxp3l" path="res://assets/umberhouse_assets/bigmode_floor.glb" id="2_yiass"]
+[ext_resource type="PackedScene" uid="uid://dglkxmlpt5q4g" path="res://assets/umberhouse_assets/bigmode_crate.glb" id="3_vhgoj"]
+[ext_resource type="PackedScene" uid="uid://cvstm5hvln1pi" path="res://assets/umberhouse_assets/bigmode_window.glb" id="4_ey61s"]
+[ext_resource type="PackedScene" uid="uid://dyeojeu4v2ehd" path="res://assets/umberhouse_assets/bigmode_door.glb" id="5_mk2a7"]
+
+[node name="UmberhouseTiles" type="Node3D" unique_id=1820949857]
+
+[node name="bigmode_wall" parent="." unique_id=1641263550 instance=ExtResource("1_hs2co")]
+visible = false
+
+[node name="bigmode_floor" parent="." unique_id=599281122 instance=ExtResource("2_yiass")]
+visible = false
+
+[node name="bigmode_crate" parent="." unique_id=2087153318 instance=ExtResource("3_vhgoj")]
+
+[node name="bigmode_window" parent="." unique_id=934000056 instance=ExtResource("4_ey61s")]
+visible = false
+
+[node name="bigmode_door" parent="." unique_id=580820942 instance=ExtResource("5_mk2a7")]
+visible = false

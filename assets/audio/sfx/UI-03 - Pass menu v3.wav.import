@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cumchnw7wvhxs"
+path="res://.godot/imported/UI-03 - Pass menu v3.wav-8f018bc849ffa526c52caaee21d8dd7c.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/UI-03 - Pass menu v3.wav"
+dest_files=["res://.godot/imported/UI-03 - Pass menu v3.wav-8f018bc849ffa526c52caaee21d8dd7c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

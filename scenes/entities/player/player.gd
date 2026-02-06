@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var grid_size: float = .5
 @export var new_room_control_freeze_time: float = .5 
 @export var move_buffer_timer: float = .2
+@export var sprite_offset_base: float = 100
 
 var move_buffer: bool = false
 var can_control: bool = false
@@ -12,8 +13,14 @@ var dash_direction: Vector3 = Vector3.ZERO
 var target_position: Vector3 = Vector3.ZERO
 var input_dir: Vector3 = Vector3.ZERO
 var buffer_dir: Vector3 = Vector3.ZERO
+var player_z_coord: float
+var last_anim: String = "test_dash_l"
+
+
 
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
+@onready var sfx_player: AudioStreamPlayer = $sfx_player
+
 
 
 func _ready() -> void:
@@ -29,6 +36,7 @@ func _ready() -> void:
 		round(position.z / grid_size) * grid_size
 	)
 	target_position = position
+	player_z_coord = position.z
 
 func _physics_process(delta: float) -> void:
 	if not can_control:
@@ -88,16 +96,35 @@ func _physics_process(delta: float) -> void:
 			buffer_dir = input_dir
 			move_buffer = true
 			get_tree().create_timer(move_buffer_timer).timeout.connect(_on_move_buffer_timeout)
+		
+		alter_sprite_offset()
 	
 	
+func alter_sprite_offset() -> void: 
+	#player_z_coord = position.z
+	#sprite.sorting_offset = sprite_offset_base - player_z_coord
+	#print(sprite.sorting_offset)
+	pass
 
 func move(dir: Vector3) -> void:
 	start_dash(dir)
-	
+	sfx_player.play()
 
 
 func start_dash(direction: Vector3) -> void:
-	sprite.play("dash")
+	match(direction):
+		Vector3.FORWARD:
+			sprite.play("test_dash_l")
+			last_anim = "test_dash_l"
+		Vector3.BACK:
+			sprite.play("test_dash_r")
+			last_anim = "test_dash_r"
+		Vector3.LEFT:
+			sprite.play(last_anim)
+		Vector3.RIGHT:
+			sprite.play(last_anim)
+	
+	
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
 		position,
@@ -126,6 +153,7 @@ func can_move_in_direction(direction: Vector3) -> bool:
 
 
 func _on_hurtbox_area_3d_body_entered(body) -> void:
+	print(body)
 	if body.is_in_group("mob"):
 		GameEvents.on_player_death.emit()
 		
@@ -137,9 +165,11 @@ func _on_transition_complete() -> void:
 	
 func _on_game_start() -> void:
 	can_control = true
+	Engine.time_scale = 1.0
 	
 func _on_player_death() -> void:
 	can_control = false
+	Engine.time_scale = 0.3
 	
 func _on_move_buffer_timeout() -> void:
 	move_buffer = false

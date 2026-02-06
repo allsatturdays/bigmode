@@ -11,14 +11,14 @@ script = ExtResource("1_shj6b")
 label = "music"
 bus = "Music"
 tracks = {
-"bgm": "res://assets/audio/temp/game jam draft 2.mp3"
+"bgm": "res://assets/audio/bgm/Slick Game Jam -- gameplay loop OGG.ogg"
 }
 
 [node name="SoundBank" parent="." unique_id=891959644 instance=ExtResource("2_ild0q")]
 label = "sfx"
 bus = "SFX"
 tracks = {
-"click": "res://assets/audio/temp/kenny_ui/click4.ogg",
+"click": "res://assets/audio/sfx/UI-04 - click menu.wav",
 "click_2": "res://assets/audio/temp/kenny_ui/mouseclick1.ogg",
 "null": "res://assets/audio/temp/kenny_ui/rollover1.ogg",
 "select": "res://assets/audio/temp/kenny_ui/click5.ogg",
@@ -26,8 +26,10 @@ tracks = {
 }
 
 [node name="BGMAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1452739073]
+bus = &"bgm"
 
 [node name="SFXAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1778037655]
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1295409442]
 

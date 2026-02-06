@@ -7,15 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://c4rtfas68em2a" path="res://assets/prototype-assets/door.glb" id="5_a808u"]
 [ext_resource type="PackedScene" uid="uid://dy3ubmr44plvy" path="res://assets/prototype-assets/box-small.glb" id="7_jnhbt"]
 [ext_resource type="PackedScene" uid="uid://de7g0doyiefsq" path="res://scenes/game_objects/greyboxing-meshes/box_wide_2.tscn" id="8_03abw"]
+[ext_resource type="PackedScene" uid="uid://c1ybtx01mjxvl" path="res://scenes/game_objects/loot/loot.tscn" id="8_8s1s5"]
+[ext_resource type="PackedScene" uid="uid://butjw53kdjsei" path="res://scenes/game_objects/level_wall/both_walls.tscn" id="9_8s1s5"]
+[ext_resource type="PackedScene" uid="uid://dglkxmlpt5q4g" path="res://assets/umberhouse_assets/bigmode_crate.glb" id="10_xlv57"]
+[ext_resource type="PackedScene" uid="uid://c7fuismm71y63" path="res://assets/umberhouse_assets/bigmode_cinderblock.glb" id="11_a808u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_peyp1"]
 size = Vector3(1, 3.5, 16.5)
 
 [node name="Room" type="Node3D" unique_id=618092124]
 script = ExtResource("1_ksbie")
+num_loot = 2
 
 [node name="GridMap" type="GridMap" parent="." unique_id=110283209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+visible = false
 mesh_library = ExtResource("2_03abw")
 cell_size = Vector3(0.5, 0.25, 0.5)
 data = {
@@ -28,11 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6091843, -0.07875991, 0.01
 
 [node name="EndOfRoom" parent="." unique_id=1757221878 instance=ExtResource("4_xlv57")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.548057, 0, 7.3741503)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=33233988]
-transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
-projection = 1
-size = 15.366299
 
 [node name="RoomBoundaries" type="Node3D" parent="." unique_id=657348369]
 
@@ -56,23 +57,406 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5123787, -0.125, 8.176071)
 [node name="box-wide1" parent="." unique_id=1735637992 instance=ExtResource("8_03abw")]
 transform = Transform3D(-9.668084e-07, 0, 0.781, 0, 2, 0, -22.118, 0, -3.4138594e-08, -0.018709183, -0.125, -2.6558075)
 
+[node name="box-wide" parent="box-wide1" index="0" unique_id=1021245654]
+visible = false
+
 [node name="box-wide2" parent="." unique_id=483511148 instance=ExtResource("8_03abw")]
 transform = Transform3D(-9.668084e-07, 0, 0.781, 0, 2, 0, -22.118, 0, -3.4138594e-08, 3.2426796, -0.125, 2.6167173)
+
+[node name="box-wide" parent="box-wide2" index="0" unique_id=1021245654]
+visible = false
 
 [node name="box-wide7" parent="." unique_id=245091095 instance=ExtResource("8_03abw")]
 transform = Transform3D(-9.668084e-07, 0, 0.781, 0, 2, 0, -22.118, 0, -3.4138594e-08, -4.0444655, -0.125, 2.5777607)
 
+[node name="box-wide" parent="box-wide7" index="0" unique_id=1021245654]
+visible = false
+
 [node name="box-wide3" parent="." unique_id=1451824196 instance=ExtResource("8_03abw")]
 transform = Transform3D(3.668, 0, 0, 0, 2, 0, 0, 0, 1.597, 7.346814, -0.125, 5.5383525)
+
+[node name="box-wide" parent="box-wide3" index="0" unique_id=1021245654]
+visible = false
 
 [node name="box-wide4" parent="." unique_id=1708886118 instance=ExtResource("8_03abw")]
 transform = Transform3D(3.668, 0, 0, 0, 5, 0, 0, 0, 1.818, 7.3166246, -0.125, 7.2602925)
 
+[node name="box-wide" parent="box-wide4" index="0" unique_id=1021245654]
+visible = false
+
 [node name="box-wide5" parent="." unique_id=733580253 instance=ExtResource("8_03abw")]
 transform = Transform3D(3.668, 0, 0, 0, 2, 0, 0, 0, 3.176, -6.8022585, -0.125, 6.565884)
 
+[node name="box-wide" parent="box-wide5" index="0" unique_id=1021245654]
+visible = false
+
+[node name="Loot2" parent="." unique_id=531469118 instance=ExtResource("8_8s1s5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6591444, -0.031251073, -0.046244144)
+
 [node name="box-small2" parent="." unique_id=250086881 instance=ExtResource("7_jnhbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6591444, -0.031251073, -0.046244144)
+visible = false
 
 [node name="box-small3" parent="." unique_id=1084311555 instance=ExtResource("7_jnhbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.120118, -0.125, 7.562552)
+visible = false
+
+[node name="Loot" parent="." unique_id=1305942604 instance=ExtResource("8_8s1s5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7.328676)
+
+[node name="Node3D" parent="." unique_id=924826197 instance=ExtResource("9_8s1s5")]
+
+[node name="CollisionMeshContainer" type="Node3D" parent="." unique_id=75516276]
+
+[node name="bigmode_crate" parent="CollisionMeshContainer" unique_id=243672205 instance=ExtResource("10_xlv57")]
+transform = Transform3D(0.7674676, 0, -0.2074092, 0, 0.795, 0, 0.2074092, 0, 0.7674676, -6.764944, 0, 5.7388983)
+
+[node name="bigmode_crate3" parent="CollisionMeshContainer" unique_id=2017313834 instance=ExtResource("10_xlv57")]
+transform = Transform3D(0.7674676, 0, -0.2074092, 0, 0.795, 0, 0.2074092, 0, 0.7674676, 7.126404, 0, 7.27526)
+
+[node name="bigmode_crate5" parent="CollisionMeshContainer" unique_id=904481104 instance=ExtResource("10_xlv57")]
+transform = Transform3D(0.2427768, 0, 0.7570236, 0, 0.79500014, 0, -0.7570236, 0, 0.2427768, 7.126404, 0, 5.3296947)
+
+[node name="bigmode_crate4" parent="CollisionMeshContainer" unique_id=969998850 instance=ExtResource("10_xlv57")]
+transform = Transform3D(0.7938917, 0, -0.041967362, 0, 0.79500014, 0, 0.041967362, 0, 0.7938917, 7.126404, 1.2919703, 7.27526)
+
+[node name="bigmode_crate2" parent="CollisionMeshContainer" unique_id=29012358 instance=ExtResource("10_xlv57")]
+transform = Transform3D(0.6715455, 0, 0.425502, 0, 0.79500014, 0, -0.425502, 0, 0.6715455, -6.764944, 0, 7.32848)
+
+[node name="cinderblock_row1" type="Node3D" parent="CollisionMeshContainer" unique_id=980375230]
+
+[node name="bigmode_cinderblock3" parent="CollisionMeshContainer/cinderblock_row1" unique_id=2061434994 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, 2.9547474)
+
+[node name="bigmode_cinderblock6" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1050025068 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, 1.1870186)
+
+[node name="bigmode_cinderblock7" parent="CollisionMeshContainer/cinderblock_row1" unique_id=933978506 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, -0.5892155)
+
+[node name="bigmode_cinderblock8" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1955653964 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, -2.669165)
+
+[node name="bigmode_cinderblock2" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1249925701 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 3.744168)
+
+[node name="bigmode_cinderblock10" parent="CollisionMeshContainer/cinderblock_row1" unique_id=752003010 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.048809, 0.40625113, 4.688502)
+
+[node name="bigmode_cinderblock28" parent="CollisionMeshContainer/cinderblock_row1" unique_id=676195401 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.048809, -0.002076447, 4.688502)
+
+[node name="bigmode_cinderblock19" parent="CollisionMeshContainer/cinderblock_row1" unique_id=132444556 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949982, 0, -0.014135843, 0, 0.19999997, 0, 0.014135843, 0, 0.19949982, -4.048809, 0.8332258, 4.688502)
+
+[node name="bigmode_cinderblock20" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1097804593 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19348094, 0, -0.050646897, 0, 0.19999994, 0, 0.050646897, 0, 0.19348094, -4.048809, 0.8332258, 3.725888)
+
+[node name="bigmode_cinderblock21" parent="CollisionMeshContainer/cinderblock_row1" unique_id=537988868 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19035421, 1.3295022e-08, 0.061361697, 0.04712329, 0.12809967, -0.14618434, -0.039302073, 0.15359184, 0.12192162, -4.0488095, 1.0529709, 1.7938187)
+
+[node name="bigmode_cinderblock22" parent="CollisionMeshContainer/cinderblock_row1" unique_id=700063413 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949982, -9.566225e-09, -0.014135851, 0.010811223, 0.12885141, 0.15257922, 0.009107115, -0.15296179, 0.12852918, -4.0488095, 1.0339622, 0.48883843)
+
+[node name="bigmode_cinderblock23" parent="CollisionMeshContainer/cinderblock_row1" unique_id=613900110 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.106492534, 0, -0.16929072, 0, 0.2, 0, 0.16929072, 0, 0.106492534, -4.04881, 0.8332258, -2.4548523)
+
+[node name="bigmode_cinderblock11" parent="CollisionMeshContainer/cinderblock_row1" unique_id=900756439 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, 2.9110687)
+
+[node name="bigmode_cinderblock12" parent="CollisionMeshContainer/cinderblock_row1" unique_id=407227260 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, 1.1531069)
+
+[node name="bigmode_cinderblock13" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1991777630 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, -0.6309979)
+
+[node name="bigmode_cinderblock14" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1543310160 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.04881, 0.40625113, -2.3876126)
+
+[node name="bigmode_cinderblock15" parent="CollisionMeshContainer/cinderblock_row1" unique_id=285264035 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, -1.5314715)
+
+[node name="bigmode_cinderblock24" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1262943897 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.8122899, -1.5314715)
+
+[node name="bigmode_cinderblock25" parent="CollisionMeshContainer/cinderblock_row1" unique_id=820455686 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19983375, 0, -0.008151918, 0, 0.19999996, 0, 0.008151918, 0, 0.19983375, -4.0488095, 0.8122899, 1.1484611)
+
+[node name="bigmode_cinderblock26" parent="CollisionMeshContainer/cinderblock_row1" unique_id=979003039 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.15555866, 0, -0.12570393, 0, 0.19999996, 0, 0.12570393, 0, -0.15555866, -4.0488095, 0.8122899, 2.873583)
+
+[node name="bigmode_cinderblock32" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1771358655 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18122321, 0, -0.08460589, 0, 0.19999997, 0, 0.08460589, 0, 0.18122321, -4.0442014, 0.037296474, 5.6146827)
+
+[node name="bigmode_cinderblock33" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1064461019 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.08339895, 0, -0.18178171, 0, 0.19999996, 0, 0.18178171, 0, 0.08339895, -4.0424166, 0.40625113, 5.5519724)
+
+[node name="bigmode_cinderblock34" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1685548133 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.19777048, 0, 0.029779322, 0, 0.19999993, 0, -0.029779322, 0, -0.19777048, -4.014778, 0.8122899, 5.52665)
+
+[node name="bigmode_cinderblock35" parent="CollisionMeshContainer/cinderblock_row1" unique_id=687929930 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.19086269, 0, -0.059761547, 0, 0.19999996, 0, 0.059761547, 0, -0.19086269, -4.0600085, 0.037296474, 6.55741)
+
+[node name="bigmode_cinderblock36" parent="CollisionMeshContainer/cinderblock_row1" unique_id=481327542 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.18417856, 0, 0.077962995, 0, 0.19999999, 0, -0.077962995, 0, -0.18417856, -4.019031, 0.40625113, 6.8402467)
+
+[node name="bigmode_cinderblock37" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1041699603 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.16610159, 0, 0.11140118, 0, 0.1999999, 0, -0.11140118, 0, 0.16610159, -4.022358, 0.8122899, 6.7303705)
+
+[node name="bigmode_cinderblock27" parent="CollisionMeshContainer/cinderblock_row1" unique_id=464618154 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.14607532, 0, -0.13660884, 0, 0.19999999, 0, 0.13660884, 0, 0.14607532, -4.0488095, 0.8122899, -0.6597779)
+
+[node name="bigmode_cinderblock16" parent="CollisionMeshContainer/cinderblock_row1" unique_id=469396249 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 0.21598029)
+
+[node name="bigmode_cinderblock17" parent="CollisionMeshContainer/cinderblock_row1" unique_id=31485515 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 1.9658234)
+
+[node name="bigmode_cinderblock18" parent="CollisionMeshContainer/cinderblock_row1" unique_id=598550709 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.048809, 0.40625113, 3.7974565)
+
+[node name="bigmode_cinderblock4" parent="CollisionMeshContainer/cinderblock_row1" unique_id=1790340108 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 2.0280225)
+
+[node name="bigmode_cinderblock5" parent="CollisionMeshContainer/cinderblock_row1" unique_id=236879970 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 0.25906062)
+
+[node name="bigmode_cinderblock29" parent="CollisionMeshContainer/cinderblock_row1" unique_id=191686794 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949982, -9.566225e-09, -0.014135851, 0.010811223, 0.12885141, 0.15257922, 0.009107115, -0.15296179, 0.12852918, -4.0488095, 1.0339622, 8.201769)
+
+[node name="bigmode_cinderblock30" parent="CollisionMeshContainer/cinderblock_row1" unique_id=574854810 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 7.9289103)
+
+[node name="bigmode_cinderblock31" parent="CollisionMeshContainer/cinderblock_row1" unique_id=38716278 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 7.9719906)
+
+[node name="bigmode_cinderblock9" parent="CollisionMeshContainer/cinderblock_row1" unique_id=64967507 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, -1.519191)
+
+[node name="cinderblock_row2" type="Node3D" parent="CollisionMeshContainer" unique_id=725198370]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.189909, 0, 0.28515482)
+
+[node name="bigmode_cinderblock3" parent="CollisionMeshContainer/cinderblock_row2" unique_id=717563524 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, 2.9547474)
+
+[node name="bigmode_cinderblock6" parent="CollisionMeshContainer/cinderblock_row2" unique_id=975615340 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, 1.1870186)
+
+[node name="bigmode_cinderblock7" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1519728106 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, -0.5892155)
+
+[node name="bigmode_cinderblock8" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1169413546 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, -2.669165)
+
+[node name="bigmode_cinderblock2" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1899132265 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 3.744168)
+
+[node name="bigmode_cinderblock10" parent="CollisionMeshContainer/cinderblock_row2" unique_id=355134085 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.048809, 0.40625113, 4.688502)
+
+[node name="bigmode_cinderblock28" parent="CollisionMeshContainer/cinderblock_row2" unique_id=156987100 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.048809, -0.002076447, 4.688502)
+
+[node name="bigmode_cinderblock19" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1502779924 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.10750998, 0, -0.16864641, 0, 0.2, 0, 0.16864641, 0, -0.10750998, -4.048809, 0.8332258, 4.688502)
+
+[node name="bigmode_cinderblock20" parent="CollisionMeshContainer/cinderblock_row2" unique_id=951574934 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19348094, 0, -0.050646897, 0, 0.19999994, 0, 0.050646897, 0, 0.19348094, -4.048809, 0.8332258, 3.725888)
+
+[node name="bigmode_cinderblock21" parent="CollisionMeshContainer/cinderblock_row2" unique_id=103652546 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19035421, 8.040679e-09, 0.061361678, 0.043150805, -0.14219424, -0.13386115, 0.043626398, 0.1406442, -0.13533643, -4.0488095, 1.0529709, 2.2479026)
+
+[node name="bigmode_cinderblock22" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1656155597 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949982, -9.566225e-09, -0.014135851, 0.010811223, 0.12885141, 0.15257922, 0.009107115, -0.15296179, 0.12852918, -4.0488095, 1.0339622, 0.48883843)
+
+[node name="bigmode_cinderblock23" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1100286362 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.106492534, 0, -0.16929072, 0, 0.2, 0, 0.16929072, 0, 0.106492534, -4.04881, 0.8332258, -2.4548523)
+
+[node name="bigmode_cinderblock11" parent="CollisionMeshContainer/cinderblock_row2" unique_id=946458716 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, 2.9110687)
+
+[node name="bigmode_cinderblock12" parent="CollisionMeshContainer/cinderblock_row2" unique_id=940986260 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, 1.1531069)
+
+[node name="bigmode_cinderblock13" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1572538722 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, -0.6309979)
+
+[node name="bigmode_cinderblock14" parent="CollisionMeshContainer/cinderblock_row2" unique_id=65151859 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.04881, 0.40625113, -2.3876126)
+
+[node name="bigmode_cinderblock15" parent="CollisionMeshContainer/cinderblock_row2" unique_id=627521075 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, -1.5314715)
+
+[node name="bigmode_cinderblock24" parent="CollisionMeshContainer/cinderblock_row2" unique_id=2111789680 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.8122899, -1.5314715)
+
+[node name="bigmode_cinderblock25" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1971026534 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19983375, 0, -0.008151918, 0, 0.19999996, 0, 0.008151918, 0, 0.19983375, -4.0488095, 0.8122899, 1.1484611)
+
+[node name="bigmode_cinderblock26" parent="CollisionMeshContainer/cinderblock_row2" unique_id=677431267 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.15555866, 0, -0.12570393, 0, 0.19999996, 0, 0.12570393, 0, -0.15555866, -4.0488095, 0.8122899, 2.873583)
+
+[node name="bigmode_cinderblock32" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1324187072 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18122321, 0, -0.08460589, 0, 0.19999997, 0, 0.08460589, 0, 0.18122321, -4.0442014, 0.037296474, 5.6146827)
+
+[node name="bigmode_cinderblock33" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1705126415 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.08339895, 0, -0.18178171, 0, 0.19999996, 0, 0.18178171, 0, 0.08339895, -4.0424166, 0.40625113, 5.5519724)
+
+[node name="bigmode_cinderblock34" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1876752204 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.19777048, 0, 0.029779322, 0, 0.19999993, 0, -0.029779322, 0, -0.19777048, -4.014778, 0.8122899, 5.52665)
+
+[node name="bigmode_cinderblock35" parent="CollisionMeshContainer/cinderblock_row2" unique_id=274696406 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.19086269, 0, -0.059761547, 0, 0.19999996, 0, 0.059761547, 0, -0.19086269, -4.0600085, 0.037296474, 6.55741)
+
+[node name="bigmode_cinderblock36" parent="CollisionMeshContainer/cinderblock_row2" unique_id=233353614 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.18417856, 0, 0.077962995, 0, 0.19999999, 0, -0.077962995, 0, -0.18417856, -4.019031, 0.40625113, 6.8402467)
+
+[node name="bigmode_cinderblock37" parent="CollisionMeshContainer/cinderblock_row2" unique_id=606310312 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.16610159, 0, 0.11140118, 0, 0.1999999, 0, -0.11140118, 0, 0.16610159, -4.022358, 0.8122899, 6.7303705)
+
+[node name="bigmode_cinderblock27" parent="CollisionMeshContainer/cinderblock_row2" unique_id=132073973 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.14607532, 0, -0.13660884, 0, 0.19999999, 0, 0.13660884, 0, 0.14607532, -4.0488095, 0.8122899, -0.6597779)
+
+[node name="bigmode_cinderblock16" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1931268443 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 0.21598029)
+
+[node name="bigmode_cinderblock17" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1239302665 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 1.9658234)
+
+[node name="bigmode_cinderblock18" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1450761476 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.048809, 0.40625113, 3.7974565)
+
+[node name="bigmode_cinderblock4" parent="CollisionMeshContainer/cinderblock_row2" unique_id=546525546 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 2.0280225)
+
+[node name="bigmode_cinderblock5" parent="CollisionMeshContainer/cinderblock_row2" unique_id=502927261 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 0.25906062)
+
+[node name="bigmode_cinderblock29" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1211726303 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949985, -8.521651e-09, -0.014135877, 0.009751406, -0.14479345, 0.13762185, -0.010233909, -0.13796689, -0.14443131, -4.0488105, 1.0339622, 7.4329348)
+
+[node name="bigmode_cinderblock30" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1784296967 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 7.9289103)
+
+[node name="bigmode_cinderblock31" parent="CollisionMeshContainer/cinderblock_row2" unique_id=858080432 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 7.9719906)
+
+[node name="bigmode_cinderblock9" parent="CollisionMeshContainer/cinderblock_row2" unique_id=1680851607 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, -1.519191)
+
+[node name="cinderblock_row3" type="Node3D" parent="CollisionMeshContainer" unique_id=2118229431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5113134, 0, 0.28515482)
+
+[node name="bigmode_cinderblock3" parent="CollisionMeshContainer/cinderblock_row3" unique_id=217053966 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, 2.9547474)
+
+[node name="bigmode_cinderblock6" parent="CollisionMeshContainer/cinderblock_row3" unique_id=715739529 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, 1.1870186)
+
+[node name="bigmode_cinderblock7" parent="CollisionMeshContainer/cinderblock_row3" unique_id=598207921 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, -0.5892155)
+
+[node name="bigmode_cinderblock8" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1666959244 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18480527, 0, 0.07646574, 0, 0.19999999, 0, -0.07646574, 0, 0.18480527, -4.0037775, 0.037296474, -2.669165)
+
+[node name="bigmode_cinderblock2" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1626074094 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 3.744168)
+
+[node name="bigmode_cinderblock10" parent="CollisionMeshContainer/cinderblock_row3" unique_id=618470086 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.048809, 0.40625113, 4.688502)
+
+[node name="bigmode_cinderblock28" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1579019302 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.048809, -0.002076447, 4.688502)
+
+[node name="bigmode_cinderblock19" parent="CollisionMeshContainer/cinderblock_row3" unique_id=781933674 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949982, 0, -0.014135843, 0, 0.19999997, 0, 0.014135843, 0, 0.19949982, -4.048809, 0.8332258, 4.688502)
+
+[node name="bigmode_cinderblock20" parent="CollisionMeshContainer/cinderblock_row3" unique_id=2142957971 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19348094, 0, -0.050646897, 0, 0.19999994, 0, 0.050646897, 0, 0.19348094, -4.048809, 0.8332258, 3.725888)
+
+[node name="bigmode_cinderblock21" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1933801899 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19035421, 1.3295022e-08, 0.061361697, 0.04712329, 0.12809967, -0.14618434, -0.039302073, 0.15359184, 0.12192162, -4.0488095, 1.0529709, 1.7938187)
+
+[node name="bigmode_cinderblock22" parent="CollisionMeshContainer/cinderblock_row3" unique_id=2051027819 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19949982, -9.566225e-09, -0.014135851, 0.010811223, 0.12885141, 0.15257922, 0.009107115, -0.15296179, 0.12852918, -4.0488095, 1.0339622, 0.48883843)
+
+[node name="bigmode_cinderblock23" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1148477431 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.106492534, 0, -0.16929072, 0, 0.2, 0, 0.16929072, 0, 0.106492534, -4.04881, 0.8332258, -2.4548523)
+
+[node name="bigmode_cinderblock11" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1352343950 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, 2.9110687)
+
+[node name="bigmode_cinderblock12" parent="CollisionMeshContainer/cinderblock_row3" unique_id=248620750 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, 1.1531069)
+
+[node name="bigmode_cinderblock13" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1252441057 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.0488095, 0.40625113, -0.6309979)
+
+[node name="bigmode_cinderblock14" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1026332007 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.04881, 0.40625113, -2.3876126)
+
+[node name="bigmode_cinderblock15" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1654056262 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, -1.5314715)
+
+[node name="bigmode_cinderblock24" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1747273833 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.8122899, -1.5314715)
+
+[node name="bigmode_cinderblock25" parent="CollisionMeshContainer/cinderblock_row3" unique_id=15442602 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19983375, 0, -0.008151918, 0, 0.19999996, 0, 0.008151918, 0, 0.19983375, -4.0488095, 0.8122899, 1.1484611)
+
+[node name="bigmode_cinderblock26" parent="CollisionMeshContainer/cinderblock_row3" unique_id=2089955377 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.15555866, 0, -0.12570393, 0, 0.19999996, 0, 0.12570393, 0, -0.15555866, -4.0488095, 0.8122899, 2.873583)
+
+[node name="bigmode_cinderblock32" parent="CollisionMeshContainer/cinderblock_row3" unique_id=2128395443 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.18122321, 0, -0.08460589, 0, 0.19999997, 0, 0.08460589, 0, 0.18122321, -4.0442014, 0.037296474, 5.6146827)
+
+[node name="bigmode_cinderblock33" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1430167254 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.08339895, 0, -0.18178171, 0, 0.19999996, 0, 0.18178171, 0, 0.08339895, -4.0424166, 0.40625113, 5.5519724)
+
+[node name="bigmode_cinderblock34" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1750832277 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.19777048, 0, 0.029779322, 0, 0.19999993, 0, -0.029779322, 0, -0.19777048, -4.014778, 0.8122899, 5.52665)
+
+[node name="bigmode_cinderblock35" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1249600569 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.19086269, 0, -0.059761547, 0, 0.19999996, 0, 0.059761547, 0, -0.19086269, -4.0600085, 0.037296474, 6.55741)
+
+[node name="bigmode_cinderblock36" parent="CollisionMeshContainer/cinderblock_row3" unique_id=624774149 instance=ExtResource("11_a808u")]
+transform = Transform3D(-0.18417856, 0, 0.077962995, 0, 0.19999999, 0, -0.077962995, 0, -0.18417856, -4.019031, 0.40625113, 6.8402467)
+
+[node name="bigmode_cinderblock37" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1342268423 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.16610159, 0, 0.11140118, 0, 0.1999999, 0, -0.11140118, 0, 0.16610159, -4.022358, 0.8122899, 6.7303705)
+
+[node name="bigmode_cinderblock27" parent="CollisionMeshContainer/cinderblock_row3" unique_id=881676646 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.14607532, 0, -0.13660884, 0, 0.19999999, 0, 0.13660884, 0, 0.14607532, -4.0488095, 0.8122899, -0.6597779)
+
+[node name="bigmode_cinderblock16" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1837052593 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 0.21598029)
+
+[node name="bigmode_cinderblock17" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1081630624 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 1.9658234)
+
+[node name="bigmode_cinderblock18" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1526261335 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.048809, 0.40625113, 3.7974565)
+
+[node name="bigmode_cinderblock4" parent="CollisionMeshContainer/cinderblock_row3" unique_id=877206891 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 2.0280225)
+
+[node name="bigmode_cinderblock5" parent="CollisionMeshContainer/cinderblock_row3" unique_id=270844807 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 0.25906062)
+
+[node name="bigmode_cinderblock30" parent="CollisionMeshContainer/cinderblock_row3" unique_id=865772063 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.1990782, 0, 0.019179568, 0, 0.19999997, 0, -0.019179568, 0, 0.1990782, -4.0488095, 0.40625113, 7.9289103)
+
+[node name="bigmode_cinderblock31" parent="CollisionMeshContainer/cinderblock_row3" unique_id=1567766892 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, 7.9719906)
+
+[node name="bigmode_cinderblock9" parent="CollisionMeshContainer/cinderblock_row3" unique_id=273910233 instance=ExtResource("11_a808u")]
+transform = Transform3D(0.19037135, 0, -0.06130853, 0, 0.19999997, 0, 0.06130853, 0, 0.19037135, -4.153753, 0.037296474, -1.519191)
+
+[node name="Sprite3DContainer" type="Node3D" parent="." unique_id=1275992271]
+
+[editable path="box-wide1"]
+[editable path="box-wide2"]
+[editable path="box-wide7"]
+[editable path="box-wide3"]
+[editable path="box-wide4"]
+[editable path="box-wide5"]

@@ -100,4 +100,4 @@ func _on_room_complete(next_room: String) -> void:
 	
 
 func play_spin_anim()-> void:
-	anim_player.play("spin")
+	anim_player.play("spin_2")

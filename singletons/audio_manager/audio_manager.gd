@@ -7,6 +7,10 @@ extends Node
 @onready var sound_bank: AudioBank = $SoundBank
 @onready var audio_config: ConfigurationAudio = $ConfigurationAudio
 
+func _ready()-> void:
+	GameEvents.on_player_death.connect(turn_on_low_pass_filter)
+	GameEvents.on_game_start.connect(turn_off_low_pass_filter)
+
 func play_music(music: AudioEnum.Music, crossfade: float = 0.0, unique: bool = true ) -> void:
 	var music_name: String = AudioEnum.music_name(music)
 	#	TODO implement crossfade maybe
@@ -25,19 +29,22 @@ func play_sfx(sfx: AudioEnum.Sfx) -> void:
 	sfx_audio.play()
 
 
-func get_bgm_audio_stream(track: String):
+func get_bgm_audio_stream(track: String)-> void:
 	var stream_path: String = music_bank.tracks[track]
 	var stream_resource: Resource = load(stream_path)
 	#var stream = stream_resource.instantiate() as AudioStream
 	bgm_audio.stream = stream_resource
 	
 	
-func get_sfx_audio_stream(track: String):
+func get_sfx_audio_stream(track: String) -> void:
 	var stream_path: String = sound_bank.tracks[track]
 	var stream_resource: Resource = load(stream_path)
 	#var stream = stream_resource.instantiate() as AudioStream
 	sfx_audio.stream = stream_resource
 	
 # TODO: implement low pass filter
-func turn_on_low_pass_filter():
-	pass
+func turn_on_low_pass_filter() -> void:
+	AudioServer.set_bus_effect_enabled(1, 0, true)
+	
+func turn_off_low_pass_filter() -> void:
+	AudioServer.set_bus_effect_enabled(1, 0, false)

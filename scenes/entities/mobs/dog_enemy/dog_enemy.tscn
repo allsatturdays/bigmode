@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cvlr4y1vkrr3v"]
 
 [ext_resource type="Script" uid="uid://c0xnwkh1nyakq" path="res://scenes/entities/mobs/dog_enemy/dog_enemy.gd" id="1_fes5n"]
+[ext_resource type="AudioStream" uid="uid://54l8vvan6gg0" path="res://assets/audio/sfx/SFX-07 – Dog Movement v2.wav" id="2_exbvd"]
+[ext_resource type="PackedScene" uid="uid://dubpapp1b7w0a" path="res://scenes/entities/mobs/enemy_sfx_player/enemy_sfx.tscn" id="3_iywb3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fes5n"]
 height = 1.2045898
@@ -18,3 +20,8 @@ shape = SubResource("CapsuleShape3D_fes5n")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1468609832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504833, 0)
 mesh = SubResource("BoxMesh_exbvd")
+
+[node name="DogAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=843276601]
+stream = ExtResource("2_exbvd")
+
+[node name="EnemySfx" parent="." unique_id=1705475275 instance=ExtResource("3_iywb3")]

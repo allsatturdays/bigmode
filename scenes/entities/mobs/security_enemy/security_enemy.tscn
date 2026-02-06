@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t6lytt658ccx"]
 
 [ext_resource type="Script" uid="uid://b3t34rmf7evbl" path="res://scenes/entities/mobs/security_enemy/security_enemy.gd" id="1_8tbxj"]
+[ext_resource type="PackedScene" uid="uid://dubpapp1b7w0a" path="res://scenes/entities/mobs/enemy_sfx_player/enemy_sfx.tscn" id="2_ik5k5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8tbxj"]
 
@@ -22,3 +23,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8tbxj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=565489240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5582998, 0)
 shape = SubResource("CapsuleShape3D_8tbxj")
+
+[node name="EnemySfx" parent="." unique_id=1705475275 instance=ExtResource("2_ik5k5")]

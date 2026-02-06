@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b6sa3exvxnqm7" path="res://scenes/game_objects/end_of_room/end_of_room.tscn" id="4_45k16"]
 [ext_resource type="PackedScene" uid="uid://c4rtfas68em2a" path="res://assets/prototype-assets/door.glb" id="5_ihn78"]
 [ext_resource type="PackedScene" uid="uid://de7g0doyiefsq" path="res://scenes/game_objects/greyboxing-meshes/box_wide_2.tscn" id="6_tip3o"]
+[ext_resource type="PackedScene" uid="uid://c1ybtx01mjxvl" path="res://scenes/game_objects/loot/loot.tscn" id="7_tip3o"]
 [ext_resource type="PackedScene" uid="uid://dy3ubmr44plvy" path="res://assets/prototype-assets/box-small.glb" id="7_yetlw"]
+[ext_resource type="PackedScene" uid="uid://butjw53kdjsei" path="res://scenes/game_objects/level_wall/both_walls.tscn" id="9_yetlw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_peyp1"]
 size = Vector3(1, 3.5, 16.5)
@@ -16,6 +18,7 @@ script = ExtResource("1_37j58")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=110283209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+visible = false
 mesh_library = ExtResource("2_2ymp5")
 cell_size = Vector3(0.5, 0.25, 0.5)
 data = {
@@ -28,11 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7525632, 0, -6.442372)
 
 [node name="EndOfRoom" parent="." unique_id=1757221878 instance=ExtResource("4_45k16")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.4996824, 0, 7.257219)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=33233988]
-transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
-projection = 1
-size = 15.366299
 
 [node name="RoomBoundaries" type="Node3D" parent="." unique_id=657348369]
 
@@ -83,11 +81,25 @@ transform = Transform3D(2.0255926, 0, 0, 0, 1.5784125, 0, 0, 0, 1.5974375, 7.648
 [node name="box-wide14" parent="." unique_id=1619520493 instance=ExtResource("6_tip3o")]
 transform = Transform3D(1.8649552, 0, 0, 0, 1.7028099, 0, 0, 0, 1.197832, 3.7973897, 0.94466305, 6.904071)
 
+[node name="Loot3" parent="." unique_id=531469118 instance=ExtResource("7_tip3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4082646, -0.125, 2.246003)
+
 [node name="box-small2" parent="." unique_id=250086881 instance=ExtResource("7_yetlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4082646, -0.125, 2.246003)
+visible = false
+
+[node name="Loot" parent="." unique_id=865241241 instance=ExtResource("7_tip3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2658572, -0.125, -7.020055)
 
 [node name="box-small3" parent="." unique_id=2032475098 instance=ExtResource("7_yetlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2658572, -0.125, -7.020055)
+visible = false
+
+[node name="Loot2" parent="." unique_id=1332360740 instance=ExtResource("7_tip3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5804214, -0.125, 7.564616)
 
 [node name="box-small4" parent="." unique_id=477475195 instance=ExtResource("7_yetlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5804214, -0.125, 7.564616)
+visible = false
+
+[node name="Node3D" parent="." unique_id=924826197 instance=ExtResource("9_yetlw")]

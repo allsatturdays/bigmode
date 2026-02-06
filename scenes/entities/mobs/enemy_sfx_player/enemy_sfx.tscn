@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dubpapp1b7w0a"]
+
+[ext_resource type="AudioStream" uid="uid://bnh72we4fmjq0" path="res://assets/audio/sfx/SFX-04 – Block Touch v1.wav" id="1_mjalt"]
+[ext_resource type="AudioStream" uid="uid://hqmrgj6n5pr6" path="res://assets/audio/sfx/SFX-05 – Block Touch v2.wav" id="2_bonhh"]
+[ext_resource type="AudioStream" uid="uid://dm1u8dyc76vrb" path="res://assets/audio/sfx/SFX-06 – Block Touch v3.wav" id="3_u5jo8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6jfwu"]
+streams_count = 3
+stream_0/stream = ExtResource("1_mjalt")
+stream_1/stream = ExtResource("2_bonhh")
+stream_2/stream = ExtResource("3_u5jo8")
+
+[node name="EnemySfx" type="AudioStreamPlayer" unique_id=1705475275]
+stream = SubResource("AudioStreamRandomizer_6jfwu")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vrhu4kdji7v2" path="res://scenes/entities/mobs/gunman_enemy/gunman_enemy.gd" id="1_cj1nf"]
 [ext_resource type="PackedScene" uid="uid://bop6mhc2p08df" path="res://scenes/game_objects/line_of_sight/line_of_sight.tscn" id="2_i2eqf"]
+[ext_resource type="PackedScene" uid="uid://dubpapp1b7w0a" path="res://scenes/entities/mobs/enemy_sfx_player/enemy_sfx.tscn" id="3_mvcxq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj1nf"]
 
@@ -28,17 +29,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cj1nf")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1113504152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49547803, -0.33715802)
 target_position = Vector3(50, 0, 0)
-collision_mask = 2
 
 [node name="RayCast3D2" type="RayCast3D" parent="." unique_id=751400754]
 transform = Transform3D(0.99999994, -3.5527137e-15, 0, 3.5527137e-15, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.49547803, 0.25895)
 target_position = Vector3(50, 0, 0)
-collision_mask = 2
 
 [node name="RayCast3D3" type="RayCast3D" parent="." unique_id=819726761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49547803, -0.01911065)
 target_position = Vector3(50, 0, 0)
-collision_mask = 3
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2035821577]
 transform = Transform3D(-2.3482313e-08, 0.68985635, 0, -0.53721267, -3.015458e-08, 0, 0, 0, 0.4020961, 0.33406782, 0.49720418, 0)
@@ -46,3 +44,5 @@ mesh = SubResource("PrismMesh_cj1nf")
 
 [node name="LineOfSight" parent="." unique_id=304275399 instance=ExtResource("2_i2eqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5022593, 0)
+
+[node name="EnemySfx" parent="." unique_id=1705475275 instance=ExtResource("3_mvcxq")]

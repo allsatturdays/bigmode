@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://butjw53kdjsei"]
+
+[ext_resource type="PackedScene" uid="uid://ccbb3xtlq0x58" path="res://scenes/game_objects/level_wall/level_wall.tscn" id="1_quwk3"]
+[ext_resource type="PackedScene" uid="uid://dcxugc6hsj68m" path="res://scenes/game_objects/level_wall/level_floor.tscn" id="2_4hm1b"]
+[ext_resource type="Material" uid="uid://c2308e6enfvwe" path="res://resources/materials/wall_material.tres" id="2_fgxqu"]
+[ext_resource type="Material" uid="uid://c4ww1cqa6j8q7" path="res://resources/materials/floor_material.tres" id="4_ytijv"]
+
+[node name="Node3D" type="Node3D" unique_id=924826197]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+
+[node name="Wall_MeshInstance3D" parent="." unique_id=2025864527 instance=ExtResource("1_quwk3")]
+transform = Transform3D(0.22441757, 0, 0, 0, 2.9828637, 0, 0, 0, 16.33885, 8.361691, 1.2074294, 0)
+surface_material_override/0 = ExtResource("2_fgxqu")
+
+[node name="StaticBody3D" parent="Wall_MeshInstance3D" index="0" unique_id=778728610]
+collision_layer = 8
+collision_mask = 8
+
+[node name="Wall_MeshInstance3D2" parent="." unique_id=1742084993 instance=ExtResource("1_quwk3")]
+transform = Transform3D(-9.809603e-09, 0, 15.794996, 0, 2.9828637, 0, -0.22441757, 0, -6.904213e-07, 0.57873917, 1.2020273, 8.277266)
+surface_material_override/0 = ExtResource("2_fgxqu")
+
+[node name="StaticBody3D" parent="Wall_MeshInstance3D2" index="0" unique_id=778728610]
+collision_layer = 8
+collision_mask = 8
+
+[node name="MeshInstance3D" parent="." unique_id=1179837724 instance=ExtResource("2_4hm1b")]
+transform = Transform3D(15.687955, 0, 0, 0, 0.18957563, 0, 0, 0, 16.36524, 0.5785818, -0.23786354, 0.082268715)
+surface_material_override/0 = ExtResource("4_ytijv")
+
+[node name="StaticBody3D" parent="MeshInstance3D" index="0" unique_id=1609922918]
+collision_layer = 8
+collision_mask = 8
+
+[editable path="Wall_MeshInstance3D"]
+[editable path="Wall_MeshInstance3D2"]
+[editable path="MeshInstance3D"]

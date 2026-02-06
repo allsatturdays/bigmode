@@ -14,6 +14,7 @@ func _ready() -> void:
 	GameEvents.menu_button_pressed.connect(_on_menu_button_pressed)
 	_toggle_menu(game_over_menu)
 	_init_action_handler()
+	
 
 
 func _init_action_handler() -> void:

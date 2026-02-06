@@ -5,7 +5,7 @@ extends BaseEnemy
 @onready var raycast_3: RayCast3D = $RayCast3D3
 
 
-var is_active: bool = true
+var is_active: bool = false
 var direction_array: Array[Vector3] = [Vector3.LEFT,  Vector3.BACK,  Vector3.RIGHT,Vector3.FORWARD]
 var current_direction: Vector3 
 var current_index: int = 0
@@ -17,6 +17,8 @@ func enemy_ready() -> void:
 	$LineOfSight.set_raycast($RayCast3D3)
 	#$LineOfSight.update_line(position, Vector3.BACK)
 	$LineOfSight.update_line()
+	GameEvents.on_room_complete.connect(_on_room_complete)
+	is_active = true
 
 func _physics_process(delta: float) -> void:
 	if !is_sight_updated and raycast_3.is_colliding():
@@ -24,10 +26,14 @@ func _physics_process(delta: float) -> void:
 		is_sight_updated = true
 		
 	if(is_active):
-		if raycast_1.is_colliding() and raycast_1.get_collider().is_in_group('player'):
-			GameEvents.on_player_death.emit()
-		if raycast_2.is_colliding() and raycast_2.get_collider().is_in_group('player'):
-			GameEvents.on_player_death.emit()	
+		if raycast_1.is_colliding(): 
+			if raycast_1.get_collider(): 
+				if raycast_1.get_collider().is_in_group('player'):
+					GameEvents.on_player_death.emit()
+		if raycast_2.is_colliding():
+			if raycast_2.get_collider(): 
+				if raycast_2.get_collider().is_in_group('player'):
+					GameEvents.on_player_death.emit()	
 		
 
 func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
@@ -41,6 +47,9 @@ func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
 	#$LineOfSight.update_line($RayCast3D3.global_position, current_direction.rotated(Vector3.UP, deg_to_rad(90)))
 	
 			
+func _on_room_complete(_room: String) -> void: 
+	is_active = false
+
 
 func _on_player_death()-> void:
 	is_active = false

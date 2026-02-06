@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cfcur31a7mtwk"
+path="res://.godot/imported/Slick Game Jam -- gameplay loop OGG.ogg-82601f9d9be356b629195d159ddc7f15.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/Slick Game Jam -- gameplay loop OGG.ogg"
+dest_files=["res://.godot/imported/Slick Game Jam -- gameplay loop OGG.ogg-82601f9d9be356b629195d159ddc7f15.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

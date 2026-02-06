@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnwo12pb7g672"]
 
 [ext_resource type="Script" uid="uid://c3l5b7gwwtaf6" path="res://scenes/entities/mobs/base_enemy.gd" id="1_q2778"]
+[ext_resource type="PackedScene" uid="uid://dubpapp1b7w0a" path="res://scenes/entities/mobs/enemy_sfx_player/enemy_sfx.tscn" id="2_rirv5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2778"]
 
@@ -16,3 +17,5 @@ shape = SubResource("BoxShape3D_q2778")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1994139012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504833, 0)
 mesh = SubResource("BoxMesh_q2778")
+
+[node name="EnemySfx" parent="." unique_id=1705475275 instance=ExtResource("2_rirv5")]

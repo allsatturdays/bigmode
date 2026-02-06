@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cm8ug8cghijq8"]
+
+[ext_resource type="Texture2D" uid="uid://co8j6jbggm2fg" path="res://assets/umberhouse_assets/umberhouse_door_decal.png" id="1_31ymf"]
+
+[node name="UhDoorDecal" type="Decal" unique_id=1715932102]
+texture_albedo = ExtResource("1_31ymf")

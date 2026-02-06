@@ -7,6 +7,9 @@ const GRID_SIZE: float = .5
 var is_moving: bool = false
 var move_direction: Vector3 = Vector3.ZERO
 
+@onready var player_death_sfx_player: AudioStreamPlayer = $EnemySfx
+
+
 func _ready() -> void:
 	# Snap to grid on start
 	position = Vector3(
@@ -74,4 +77,4 @@ func can_move_in_direction(direction: Vector3) -> bool:
 	return result.is_empty()
 	
 func _on_player_death()-> void:
-	pass
+	player_death_sfx_player.play()
