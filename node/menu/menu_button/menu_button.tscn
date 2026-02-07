@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://cjidrww5kw84q"]
 
 [ext_resource type="Script" uid="uid://crboqtvhi5led" path="res://node/menu/menu_button/menu_button.gd" id="1_7og88"]
+[ext_resource type="FontFile" uid="uid://cu45jgaqsrwkt" path="res://assets/fonts/Square Thief.ttf" id="1_ntqte"]
+[ext_resource type="StyleBox" uid="uid://blo16nyfvqpl" path="res://resources/ui/button_normal.tres" id="2_nstt7"]
+[ext_resource type="StyleBox" uid="uid://blf1eso55pjf0" path="res://resources/ui/button_pressed.tres" id="3_5mqv7"]
+[ext_resource type="StyleBox" uid="uid://dy1xy8a7uifof" path="res://resources/ui/button_hover.tres" id="4_5mqv7"]
 
 [node name="MenuButton" type="Button" unique_id=2072965305]
+custom_minimum_size = Vector2(196.928, 50.288)
+offset_right = 42.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("1_ntqte")
+theme_override_styles/normal = ExtResource("2_nstt7")
+theme_override_styles/pressed = ExtResource("3_5mqv7")
+theme_override_styles/hover = ExtResource("4_5mqv7")
+text = "              "
 script = ExtResource("1_7og88")

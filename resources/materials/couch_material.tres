@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0otdxi78obhj"]
+
+[ext_resource type="Texture2D" uid="uid://c77qw4y6o7bc3" path="res://assets/umberhouse_assets/bigmode_couch_Material.png" id="1_hf5ec"]
+
+[resource]
+diffuse_mode = 3
+albedo_texture = ExtResource("1_hf5ec")

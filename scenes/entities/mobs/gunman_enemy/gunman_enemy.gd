@@ -3,6 +3,7 @@ extends BaseEnemy
 @onready var raycast_1: RayCast3D = $RayCast3D
 @onready var raycast_2: RayCast3D = $RayCast3D2
 @onready var raycast_3: RayCast3D = $RayCast3D3
+@onready var anim_sprite = $AnimatedSprite3D
 
 
 var is_active: bool = false
@@ -19,6 +20,7 @@ func enemy_ready() -> void:
 	$LineOfSight.update_line()
 	GameEvents.on_room_complete.connect(_on_room_complete)
 	is_active = true
+	anim_sprite.play("face_up")
 
 func _physics_process(delta: float) -> void:
 	if !is_sight_updated and raycast_3.is_colliding():
@@ -41,9 +43,26 @@ func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
 	await get_tree().create_timer(.1).timeout
 	is_sight_updated = false
 	#is_line_of_sight_made = false
-	#current_index = (current_index+1) % 4
+	current_index = (current_index+1) % 4
 	#print(current_index)
-	#current_direction = direction_array[current_index]
+	current_direction = direction_array[current_index]
+	match current_direction:
+		Vector3.LEFT:
+				anim_sprite.flip_h = true
+				anim_sprite.play("face_up")
+		Vector3.BACK:
+				anim_sprite.flip_h = false
+				anim_sprite.play("face_up")
+		Vector3.FORWARD:
+		
+				anim_sprite.flip_h = true
+				anim_sprite.play("face_down")
+				
+		Vector3.RIGHT:
+				anim_sprite.flip_h = false
+				anim_sprite.play("face_down")
+				
+				
 	#$LineOfSight.update_line($RayCast3D3.global_position, current_direction.rotated(Vector3.UP, deg_to_rad(90)))
 	
 			

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dqy4vh8a3lgd2"]
+
+[sub_resource type="Curve" id="Curve_nh4ur"]
+_data = [Vector2(0.1179941, 0.56717294), 0.0, 0.0, 0, 0, Vector2(0.28318584, 1), 0.0, 0.0, 0, 0, Vector2(0.53097343, 0.06600475), 0.0, 0.0, 0, 0, Vector2(0.69911504, 0.9012851), -5.720403, -5.720403, 0, 0, Vector2(0.81120944, 0.3469627), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh4ur"]
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.14406255, 0.14406255, 0.14406255, 1)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_nh4ur"]
+material = SubResource("StandardMaterial3D_nh4ur")
+shape = 0
+size = 8.767
+curve = SubResource("Curve_nh4ur")
+
+[node name="CPUParticles3D2" type="CPUParticles3D" unique_id=1164956117]
+amount = 11
+lifetime = 0.5
+mesh = SubResource("RibbonTrailMesh_nh4ur")
+emission_shape = 1
+emission_sphere_radius = 1.35
+particle_flag_align_y = true
+spread = 33.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.0

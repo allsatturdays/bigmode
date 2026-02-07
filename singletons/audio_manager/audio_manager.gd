@@ -10,6 +10,7 @@ extends Node
 func _ready()-> void:
 	GameEvents.on_player_death.connect(turn_on_low_pass_filter)
 	GameEvents.on_game_start.connect(turn_off_low_pass_filter)
+	play_music(AudioEnum.Music.MENU, 0.0, true)
 
 func play_music(music: AudioEnum.Music, crossfade: float = 0.0, unique: bool = true ) -> void:
 	var music_name: String = AudioEnum.music_name(music)

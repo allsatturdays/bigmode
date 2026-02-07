@@ -69,6 +69,7 @@ var _expression_parser: DMExpressionParser = DMExpressionParser.new()
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Cache the known Node2D properties
 	_node_properties = ["Script Variables"]
 	var temp_node: Node2D = Node2D.new()
@@ -539,7 +540,7 @@ func _start_balloon(balloon: Node, resource: DialogueResource, title: String, ex
 # Get the path to the example balloon
 func _get_example_balloon_path() -> String:
 	var is_small_window: bool = ProjectSettings.get_setting("display/window/size/viewport_width") < 400
-	var balloon_path: String = "/example_balloon/small_example_balloon.tscn" if is_small_window else "/example_balloon/example_balloon.tscn"
+	var balloon_path: String = "/example_balloon/small_example_balloon.tscn" if is_small_window else "/example_balloon/dialogue_balloon.tscn"
 	return get_script().resource_path.get_base_dir() + balloon_path
 
 

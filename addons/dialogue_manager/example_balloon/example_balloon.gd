@@ -67,6 +67,9 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+@onready var talk_sound = $TalkSound
+@onready var is_player_portrait: bool = true
+
 
 func _ready() -> void:
 	balloon.hide()
@@ -107,6 +110,13 @@ func _notification(what: int) -> void:
 
 ## Start some dialogue
 func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
+	if is_player_portrait:
+		$Balloon/PortraitMarginContainer.visible = false
+		$Balloon/PlayerPortraitMarginContainer/TextureRect.visible = true
+	else:
+		$Balloon/PortraitMarginContainer.visible = true
+		$Balloon/PlayerPortraitMarginContainer/TextureRect.visible = false
+		
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	if is_instance_valid(with_dialogue_resource):
@@ -144,6 +154,7 @@ func apply_dialogue_line() -> void:
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
 
+	print(dialogue_line.tags)
 	# Wait for next line
 	if dialogue_line.has_tag("voice"):
 		audio_stream_player.stream = load(dialogue_line.get_tag_value("voice"))
@@ -211,3 +222,10 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter, letter_index, speed):
+	if not letter in [".", " "]:
+		talk_sound.play()
+	else:
+		talk_sound.stop()

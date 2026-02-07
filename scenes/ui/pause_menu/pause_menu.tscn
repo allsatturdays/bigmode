@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7x8kq3ax2dj8"]
 
 [ext_resource type="Script" uid="uid://bbs1jiecudjcv" path="res://scenes/ui/pause_menu/pause_menu.gd" id="1_xgg5q"]
+[ext_resource type="FontFile" uid="uid://cu45jgaqsrwkt" path="res://assets/fonts/Square Thief.ttf" id="2_2mh1u"]
 [ext_resource type="PackedScene" uid="uid://cjidrww5kw84q" path="res://node/menu/menu_button/menu_button.tscn" id="2_rv5mv"]
 [ext_resource type="PackedScene" uid="uid://cegf3gabvsje2" path="res://components/control/control_grab_focus/control_grab_focus.tscn" id="3_2mh1u"]
 
@@ -55,7 +56,8 @@ theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=121705585]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_2mh1u")
+theme_override_font_sizes/font_size = 42
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1

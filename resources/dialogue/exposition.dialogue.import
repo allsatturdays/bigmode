@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://jtkodl8v46dp"
+path="res://.godot/imported/exposition.dialogue-cddd1b80015ab9c47bdfcb7c88e6b87a.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/exposition.dialogue"
+dest_files=["res://.godot/imported/exposition.dialogue-cddd1b80015ab9c47bdfcb7c88e6b87a.tres"]
+
+[params]
+
+defaults=true

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b88kuy67g4l8f"]
 
 [ext_resource type="Script" uid="uid://by1vav2h3nety" path="res://scenes/ui/main_menu/main_menu/main_menu.gd" id="1_j1c5u"]
+[ext_resource type="Texture2D" uid="uid://sf3bdrm3oq2t" path="res://assets/visuals/ui/Illustration220.png" id="2_fswdd"]
+[ext_resource type="FontFile" uid="uid://cu45jgaqsrwkt" path="res://assets/fonts/Square Thief.ttf" id="2_uaf6o"]
 [ext_resource type="PackedScene" uid="uid://cegf3gabvsje2" path="res://components/control/control_grab_focus/control_grab_focus.tscn" id="3_jhg6y"]
 [ext_resource type="PackedScene" uid="uid://cjidrww5kw84q" path="res://node/menu/menu_button/menu_button.tscn" id="3_u405l"]
 
@@ -21,6 +23,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="background_texture" type="TextureRect" parent="RootMarginContainer" unique_id=1070118477]
+layout_mode = 2
+texture = ExtResource("2_fswdd")
+expand_mode = 2
 
 [node name="FooterMarginContainer" type="MarginContainer" parent="RootMarginContainer" unique_id=1137223085]
 layout_mode = 2
@@ -74,8 +81,9 @@ theme_override_constants/separation = 32
 [node name="TitleLabel" type="Label" parent="RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=1570120292]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uaf6o")
 theme_override_font_sizes/font_size = 64
-text = "Game Template"
+text = "Thief Trot"
 horizontal_alignment = 1
 vertical_alignment = 1
 

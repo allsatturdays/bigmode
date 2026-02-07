@@ -5,4 +5,5 @@
 [node name="Sprite3D2" type="Sprite3D" unique_id=1576685846]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 shaded = true
+render_priority = 90
 texture = ExtResource("1_l748e")

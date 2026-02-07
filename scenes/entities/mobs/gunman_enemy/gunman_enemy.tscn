@@ -3,6 +3,18 @@
 [ext_resource type="Script" uid="uid://vrhu4kdji7v2" path="res://scenes/entities/mobs/gunman_enemy/gunman_enemy.gd" id="1_cj1nf"]
 [ext_resource type="PackedScene" uid="uid://bop6mhc2p08df" path="res://scenes/game_objects/line_of_sight/line_of_sight.tscn" id="2_i2eqf"]
 [ext_resource type="PackedScene" uid="uid://dubpapp1b7w0a" path="res://scenes/entities/mobs/enemy_sfx_player/enemy_sfx.tscn" id="3_mvcxq"]
+[ext_resource type="Texture2D" uid="uid://nb40ar17b640" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0008.png" id="5_4wh7u"]
+[ext_resource type="Texture2D" uid="uid://24x425ebds2c" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0000.png" id="5_jnupk"]
+[ext_resource type="Texture2D" uid="uid://5ym6lr7o2vqq" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0001.png" id="6_8i8me"]
+[ext_resource type="Texture2D" uid="uid://bnii3gqwd4sa6" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0009.png" id="6_v8fub"]
+[ext_resource type="Texture2D" uid="uid://cnnw0t3fbkfqk" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0010.png" id="7_bpme1"]
+[ext_resource type="Texture2D" uid="uid://dqsppplioyn3p" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0002.png" id="7_iy2ox"]
+[ext_resource type="Texture2D" uid="uid://bxeqfpity8hlx" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0003.png" id="8_sxd4a"]
+[ext_resource type="Texture2D" uid="uid://cjqqdlyde2ag1" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0011.png" id="8_uquy7"]
+[ext_resource type="Texture2D" uid="uid://5ujen2c6f5yi" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0012.png" id="9_eodra"]
+[ext_resource type="Texture2D" uid="uid://d2lxqh14r4leq" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0004.png" id="9_vpnta"]
+[ext_resource type="Texture2D" uid="uid://sfnq1ku6tw3e" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0005.png" id="10_60a3h"]
+[ext_resource type="Texture2D" uid="uid://cl2kv440mwdyr" path="res://assets/visuals/mob_sprites/gunman/armed_guard_animation_0013.png" id="10_yv6re"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj1nf"]
 
@@ -12,6 +24,55 @@
 albedo_color = Color(0, 0.70179814, 0.7017979, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_cj1nf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gw0rh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jnupk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8i8me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iy2ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sxd4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vpnta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_60a3h")
+}],
+"loop": true,
+"name": &"face_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4wh7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v8fub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bpme1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uquy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_eodra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yv6re")
+}],
+"loop": true,
+"name": &"face_up",
+"speed": 5.0
+}]
 
 [node name="GunmanEnemy" type="CharacterBody3D" unique_id=543380334]
 script = ExtResource("1_cj1nf")
@@ -23,6 +84,7 @@ shape = SubResource("BoxShape3D_cj1nf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1384610541]
 transform = Transform3D(0.5076083, 0, 0, 0, 1, 0, 0, 0, 1, -0.2317082, 0.51281506, 0)
+visible = false
 mesh = SubResource("BoxMesh_i2eqf")
 surface_material_override/0 = SubResource("StandardMaterial3D_cj1nf")
 
@@ -40,9 +102,17 @@ target_position = Vector3(50, 0, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2035821577]
 transform = Transform3D(-2.3482313e-08, 0.68985635, 0, -0.53721267, -3.015458e-08, 0, 0, 0, 0.4020961, 0.33406782, 0.49720418, 0)
+visible = false
 mesh = SubResource("PrismMesh_cj1nf")
 
 [node name="LineOfSight" parent="." unique_id=304275399 instance=ExtResource("2_i2eqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5022593, 0)
 
 [node name="EnemySfx" parent="." unique_id=1705475275 instance=ExtResource("3_mvcxq")]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2062045521]
+transform = Transform3D(1.695, 0, 0, 0, 1.695, 0, 0, 0, 1.695, -0.07121587, 0.95139074, 0)
+flip_h = true
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_gw0rh")
+animation = &"face_down"

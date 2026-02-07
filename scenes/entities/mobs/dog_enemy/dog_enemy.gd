@@ -6,6 +6,11 @@ var MOVE_SPEED = 30.0  # Faster speed for quick discrete movement
 
 var target_position: Vector3 = Vector3.ZERO
 @onready var dog_audio_stream_player: AudioStreamPlayer = $DogAudioStreamPlayer
+@onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
+
+var direction_array: Array[Vector3] = [Vector3.LEFT,  Vector3.BACK,  Vector3.RIGHT,Vector3.FORWARD]
+var current_direction: Vector3 
+var current_index: int = 0
 
 
 func enemy_ready():
@@ -54,6 +59,25 @@ func _on_player_move(player_position: Vector3, player_move_direction: Vector3):
 
 	# Get direction towards player
 	var direction = get_direction_to(player_position)
+	
+	match(direction):
+		Vector3.FORWARD:
+			sprite.flip_h = false
+			sprite.play("face_down")
+
+		Vector3.BACK:
+			sprite.flip_h = true
+			sprite.play("face_up")
+
+		Vector3.LEFT:
+			#sprite.play(last_anim)
+			sprite.flip_h = true
+			sprite.play("face_down")
+		Vector3.RIGHT:
+			#sprite.play(last_anim)
+			sprite.flip_h = false
+			sprite.play("face_up")
+			
 	
 	# Calculate how many steps we can actually take
 	var steps_to_take = calculate_valid_steps(direction, steps_per_turn)

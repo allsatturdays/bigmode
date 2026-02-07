@@ -11,6 +11,8 @@ signal on_transition_start()
 signal on_player_death()
 signal on_game_start()
 signal on_loot_pickup()
+signal on_room_start(countdown_time: int)
+signal on_all_loot_found()
 
 
 # UI signals

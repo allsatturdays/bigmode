@@ -15,15 +15,21 @@ var input_dir: Vector3 = Vector3.ZERO
 var buffer_dir: Vector3 = Vector3.ZERO
 var player_z_coord: float
 var last_anim: String = "test_dash_l"
+var move_distance: float = 0.0
 
 
 
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 @onready var sfx_player: AudioStreamPlayer = $sfx_player
+@onready var dust: PackedScene = preload("res://scenes/vfx/dash_dust/dash_dust.tscn")
+@onready var particles: CPUParticles3D = $particle_pivot/CPUParticles3D
+@onready var particle_pivot: Node3D = $particle_pivot
+@onready var raycast = $RayCast3D
 
 
 
 func _ready() -> void:
+	particles.emitting = false
 	sprite.play("default")
 	GameEvents.connect("on_transition_start", _on_transition_start)
 	GameEvents.connect("on_transition_complete", _on_transition_complete)
@@ -39,9 +45,10 @@ func _ready() -> void:
 	player_z_coord = position.z
 
 func _physics_process(delta: float) -> void:
+	
 	if not can_control:
 		return
-		
+	
 		
 	if is_dashing:
 		velocity = dash_direction * dash_speed
@@ -88,7 +95,7 @@ func _physics_process(delta: float) -> void:
 		
 	elif Input.is_action_just_pressed("move_right"):
 		input_dir = Vector3.RIGHT
-
+	
 	if input_dir != Vector3.ZERO:
 		if !is_dashing and can_move_in_direction(input_dir):
 			move(input_dir)
@@ -99,30 +106,87 @@ func _physics_process(delta: float) -> void:
 		
 		alter_sprite_offset()
 	
-	
+
 func alter_sprite_offset() -> void: 
 	#player_z_coord = position.z
 	#sprite.sorting_offset = sprite_offset_base - player_z_coord
 	#print(sprite.sorting_offset)
 	pass
 
+func spawn_dust() -> void:
+	var instance = dust.instantiate()
+	#await instance.ready
+	get_parent().add_child(instance)
+	instance.global_position = $Marker3D.global_position
+	
+
+func emit_particle(dir: Vector3)-> void:
+	match dir:
+		Vector3.FORWARD:
+			particle_pivot.rotation = Vector3(0, deg_to_rad(-90), 0)
+			
+		Vector3.BACK:
+			particle_pivot.rotation = Vector3(0, deg_to_rad(90), 0)
+		Vector3.LEFT:
+			particle_pivot.rotation = Vector3.ZERO
+			
+		Vector3.RIGHT:
+			particle_pivot.rotation = Vector3(0, deg_to_rad(180), 0)
+	
+	if move_distance < 1:
+		particles.scale_amount_max = .1
+	elif move_distance < 4.0:
+		print(move_distance)
+		particles.scale_amount_max = .5
+	else:
+		particles.scale_amount_min = .5
+		particles.scale_amount_max = 1
+	
+	particles.direction = dir
+	particles.emitting = true
+	#match dir:
+		#Vector3.UP:
+			#particle_pivot.rotation = Vector3(deg_to_rad(0)
+
+
+func get_move_distance(dir: Vector3) -> void:
+	raycast.target_position = dir * 1000
+	await get_tree().create_timer(.1).timeout
+	if raycast.is_colliding():
+		var start: Vector3 = raycast.global_position
+		var end: Vector3 = raycast.get_collision_point()
+		move_distance = start.distance_to(end)
+	else:
+		move_distance = 0.0
+
 func move(dir: Vector3) -> void:
 	start_dash(dir)
 	sfx_player.play()
+	spawn_dust()
+	await get_move_distance(dir)
+	emit_particle(dir)
+
+	
 
 
 func start_dash(direction: Vector3) -> void:
 	match(direction):
 		Vector3.FORWARD:
+			sprite.flip_h = false
 			sprite.play("test_dash_l")
 			last_anim = "test_dash_l"
 		Vector3.BACK:
+			sprite.flip_h = false
 			sprite.play("test_dash_r")
 			last_anim = "test_dash_r"
 		Vector3.LEFT:
-			sprite.play(last_anim)
+			#sprite.play(last_anim)
+			sprite.flip_h = true
+			sprite.play("test_dash_l")
 		Vector3.RIGHT:
-			sprite.play(last_anim)
+			#sprite.play(last_anim)
+			sprite.flip_h = true
+			sprite.play("test_dash_r")
 	
 	
 	var space_state = get_world_3d().direct_space_state
@@ -153,7 +217,6 @@ func can_move_in_direction(direction: Vector3) -> bool:
 
 
 func _on_hurtbox_area_3d_body_entered(body) -> void:
-	print(body)
 	if body.is_in_group("mob"):
 		GameEvents.on_player_death.emit()
 		
@@ -169,7 +232,6 @@ func _on_game_start() -> void:
 	
 func _on_player_death() -> void:
 	can_control = false
-	Engine.time_scale = 0.3
 	
 func _on_move_buffer_timeout() -> void:
 	move_buffer = false

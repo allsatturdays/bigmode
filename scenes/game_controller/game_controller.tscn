@@ -7,11 +7,44 @@
 [ext_resource type="PackedScene" uid="uid://c7fb6bucs6ey3" path="res://scenes/ui/main_menu/menu_scene.tscn" id="4_giy5l"]
 [ext_resource type="PackedScene" uid="uid://daw4oh1hf2c0e" path="res://scenes/ui/scene_transition/scene_transition.tscn" id="4_s8vvr"]
 [ext_resource type="Texture2D" uid="uid://brlsnn1fahw33" path="res://assets/prototype-sprites/leel_stuff_umber_house.png" id="5_dv3no"]
+[ext_resource type="Script" uid="uid://bja67l43j5m32" path="res://scenes/game_controller/shakeable_camera.gd" id="6_3ekfv"]
+[ext_resource type="Shader" uid="uid://dke5x35bj8ss6" path="res://shaders/sobel_outline.gdshader" id="6_fxqm4"]
 [ext_resource type="PackedScene" uid="uid://dlocyykllqupr" path="res://scenes/dialogue_controller/dialogue_controller.tscn" id="6_giy5l"]
+[ext_resource type="Script" uid="uid://catx8dbxuee0v" path="res://scenes/game_controller/shader_camera.gd" id="9_3sgk5"]
+[ext_resource type="PackedScene" uid="uid://d2rh85gv1n5wy" path="res://scenes/level_generation/building/buildings/building_umber_house.tscn" id="10_evbu1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3ekfv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ekfv"]
+radius = 1.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_evbu1"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_evbu1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ekfv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_fxqm4")
+shader_parameter/ghost_tex = SubResource("ViewportTexture_evbu1")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_evbu1")
+shader_parameter/jitter_amount = 0.0
+shader_parameter/jitter_speed = 0.0
+shader_parameter/depth_threshold = 0.2
+shader_parameter/color_threshold = 0.790000037525
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_width = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_rckcs"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_3ekfv")
+size = Vector2(2, 2)
 
 [sub_resource type="Environment" id="Environment_tf5t3"]
 background_mode = 1
-background_color = Color(0.011310841, 0.03504212, 0.14568189, 1)
+background_color = Color(0, 0.1254902, 0, 1)
+reflected_light_source = 1
 sdfgi_enabled = true
 
 [sub_resource type="Animation" id="Animation_c4mfo"]
@@ -74,7 +107,7 @@ world_3d = NodePath("World3D")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 building_container = NodePath("BuildingContainer")
-first_building_path = "res://scenes/level_generation/building/building.tscn"
+first_building_path = "res://scenes/level_generation/building/buildings/building_umber_house.tscn"
 
 [node name="World3D" type="Node3D" parent="." unique_id=1206072884]
 
@@ -89,27 +122,43 @@ texture = ExtResource("3_c4mfo")
 
 [node name="Collisions" type="Sprite3D" parent="World3D/Node3D" unique_id=645712490]
 transform = Transform3D(2.795, 0, 0, 0, 2.795, 0, 0, 0, 2.795, 0.005, 1.43, 0.685)
+visible = false
 billboard = 1
 texture_filter = 0
 texture = ExtResource("5_dv3no")
 
 [node name="Walls" type="Sprite3D" parent="World3D/Node3D" unique_id=73825479]
 transform = Transform3D(2.795, 0, 0, 0, 2.795, 0, 0, 0, 2.795, 0.005, 1.43, 0.685)
-billboard = 1
+visible = false
 texture_filter = 0
 texture = ExtResource("3_c4mfo")
 
 [node name="Floor" type="Sprite3D" parent="World3D/Node3D" unique_id=1984129064]
 transform = Transform3D(2.795, 0, 0, 0, 2.795, 0, 0, 0, 2.795, 0.005, 1.43, 0.685)
+visible = false
 billboard = 1
 texture_filter = 0
 texture = ExtResource("4_3sgk5")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1910717525]
+[node name="Area3D" type="Area3D" parent="." unique_id=279824668]
 transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
+script = ExtResource("6_3ekfv")
+noise = SubResource("FastNoiseLite_3ekfv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2040246822]
+shape = SubResource("SphereShape3D_3ekfv")
+
+[node name="Camera3D" type="Camera3D" parent="Area3D" unique_id=1910717525]
+transform = Transform3D(0.99999994, -2.9802322e-08, 2.9802322e-08, 1.4901161e-08, 0.99999994, 0, 2.9802322e-08, 0, 1, 0, 0, 0)
 projection = 1
 current = true
 size = 20.0
+near = 0.02
+far = 1000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Camera3D" unique_id=2019900489]
+visible = false
+mesh = SubResource("QuadMesh_rckcs")
 
 [node name="Environment" type="Node3D" parent="." unique_id=2093011291]
 
@@ -117,8 +166,10 @@ size = 20.0
 environment = SubResource("Environment_tf5t3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=878945815]
-transform = Transform3D(1, 0, 0, 0, 0.87191546, 0.4896564, 0, -0.4896564, 0.87191546, 0, 2.2859454, 0)
-light_energy = 0.3
+transform = Transform3D(0.9861424, 0.12655662, -0.10727155, 0.15623927, -0.4909974, 0.857036, 0.05579348, -0.8619195, -0.5039664, 0, 2.2859454, 0)
+light_color = Color(0.8217887, 0.82178867, 0.82178867, 1)
+light_energy = 1.622
+light_indirect_energy = 0.0
 sky_mode = 1
 
 [node name="World2D" type="Node2D" parent="." unique_id=271297995]
@@ -141,8 +192,24 @@ layout_mode = 1
 [node name="BuildingContainer" type="Node" parent="." unique_id=736542328]
 
 [node name="Building" parent="BuildingContainer" unique_id=688169817 instance=ExtResource("3_ubedv")]
-debug_room_array = Array[String](["res://scenes/level_generation/room/rooms/03_TheUmberHouse_Room_3.tscn"])
+debug_room_array = Array[String](["res://scenes/level_generation/room/rooms/test_room_1.tscn"])
 is_in_debug_mode = true
+
+[node name="BuildingUmberHouse" parent="BuildingContainer" unique_id=1135907331 instance=ExtResource("10_evbu1")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=873616486]
 libraries/ = SubResource("AnimationLibrary_3sgk5")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=723444127]
+size = Vector2i(1290, 720)
+
+[node name="ShaderCamera" type="Camera3D" parent="SubViewport" unique_id=577930808 node_paths=PackedStringArray("main_camera")]
+transform = Transform3D(-0.64911467, 0.37262654, -0.6631739, 0.013357029, 0.877254, 0.4798407, 0.7605734, 0.30261362, -0.57441556, -10.284349, 8.948053, -8.3930435)
+cull_mask = 3
+projection = 1
+current = true
+size = 20.0
+near = 0.02
+far = 1000.0
+script = ExtResource("9_3sgk5")
+main_camera = NodePath("../../Area3D/Camera3D")

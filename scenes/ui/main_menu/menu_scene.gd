@@ -51,6 +51,7 @@ func _action_main_menu_play() -> void:
 	Main.game_controller.change_3d_scene(Main.game_controller.current_building.rooms[Main.game_controller.current_building.current_room], true, false)
 	Main.game_controller.change_gui_scene("res://scenes/ui/score_ui/score_ui.tscn", true, false)
 	GameEvents.on_game_start.emit()
+	GameEvents.on_room_start.emit(Main.game_controller.current_room.countdown_time)
 	
 
 func _action_main_menu_options() -> void:

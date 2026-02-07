@@ -19,6 +19,65 @@ streams_count = 2
 stream_0/stream = ExtResource("3_bjvvg")
 stream_1/stream = ExtResource("4_8akj5")
 
+[sub_resource type="Curve" id="Curve_nh4ur"]
+_data = [Vector2(0.0619469, 0.08119166), 0.0, 0.0, 0, 0, Vector2(0.17404129, 0.69626176), 0.0, 0.0, 0, 0, Vector2(0.22418879, 0.49123836), 0.0, 0.0, 0, 0, Vector2(0.33923304, 0.14193928), 0.4004281, 0.4004281, 0, 0, Vector2(0.34513277, 1), 0.0, 0.0, 0, 0, Vector2(0.45132744, 0.21028042), 0.0, 0.0, 0, 0, Vector2(0.5103245, 1), 0.0, 0.0, 0, 0, Vector2(0.6342183, 0.23306078), 0.0, 0.0, 0, 0, Vector2(0.6696165, 0.50642526), 0.0, 0.0, 0, 0, Vector2(0.67256635, 0.916472), 0.0, 0.0, 0, 0, Vector2(0.78466076, 0.22546732), 1.5445112, 1.5445112, 0, 0, Vector2(0.8702065, 0.71144867), 0.0, 0.0, 0, 0, Vector2(0.9970501, 0.043224335), -9.438663, -5.720403, 0, 0]
+point_count = 13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh4ur"]
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.851769, 0.8517689, 0.85176885, 1)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_nh4ur"]
+material = SubResource("StandardMaterial3D_nh4ur")
+shape = 0
+size = 6.494
+section_segments = 128
+curve = SubResource("Curve_nh4ur")
+
+[sub_resource type="Gradient" id="Gradient_nh4ur"]
+offsets = PackedFloat32Array(0.09657321, 0.38317758, 0.576324, 0.78193146, 1)
+colors = PackedColorArray(0.34901962, 0.34117648, 0.34901962, 1, 0.92941177, 0.4627451, 0.32156864, 1, 0.9349424, 0.5048395, 0.3747243, 1, 0.9887405, 0.91430295, 0.89178395, 1, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_nh4ur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bjvvg"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("AnimatedSprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.5707964), Vector3(0, 0, 3.1415927)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8akj5"]
+_data = {
+&"RESET": SubResource("Animation_nh4ur"),
+&"death": SubResource("Animation_bjvvg")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=2141726005 groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_symyc")
@@ -41,10 +100,37 @@ shape = SubResource("BoxShape3D_1hmtu")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=819043581]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.62278056, 0)
 billboard = 1
+render_priority = 127
 sprite_frames = ExtResource("2_635qg")
-frame_progress = 0.67219067
 
 [node name="sfx_player" type="AudioStreamPlayer" parent="." unique_id=402958733]
 stream = SubResource("AudioStreamRandomizer_1murt")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1192662438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16536447, 0)
+
+[node name="particle_pivot" type="Node3D" parent="." unique_id=1681905095]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="particle_pivot" unique_id=1377954440]
+transform = Transform3D(1, 0, 0, 0, -0.052893665, -0.9986001, 0, 0.9986001, -0.052893665, 2.5, 0.849, 0)
+emitting = false
+amount = 5
+lifetime = 0.15000000000000002
+one_shot = true
+mesh = SubResource("RibbonTrailMesh_nh4ur")
+emission_shape = 1
+emission_sphere_radius = 0.51
+emission_colors = PackedColorArray(0.99999994, 0.34251475, 0.19365844, 1, 0.8776157, 0.8776158, 0.8776157, 1, 0, 0, 0, 1)
+particle_flag_align_y = true
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+scale_amount_min = 0.0
+color_initial_ramp = SubResource("Gradient_nh4ur")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=845679876]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2072106084]
+libraries/ = SubResource("AnimationLibrary_8akj5")
 
 [connection signal="body_entered" from="HurtboxArea3D" to="." method="_on_hurtbox_area_3d_body_entered"]

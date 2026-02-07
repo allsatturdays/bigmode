@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://mte4f2lhr6aj"]
+
+[ext_resource type="Texture2D" uid="uid://cui0mowvt2503" path="res://assets/prototype-sprites/dust1.png" id="1_no18r"]
+[ext_resource type="Texture2D" uid="uid://dyxkww2dmaqml" path="res://assets/prototype-sprites/dust2.png" id="2_4lcjb"]
+[ext_resource type="Texture2D" uid="uid://6mxkjfqp2nyf" path="res://assets/prototype-sprites/dust3.png" id="3_v22kg"]
+[ext_resource type="Texture2D" uid="uid://8uuqwtg5ecjv" path="res://assets/prototype-sprites/dust4.png" id="4_juqj4"]
+[ext_resource type="Script" uid="uid://buxc65e2ctje7" path="res://scenes/vfx/dash_dust/dash_dust.gd" id="5_4lcjb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lcjb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_no18r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4lcjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v22kg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_juqj4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_4lcjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v22kg"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_juqj4"]
+_data = {
+&"RESET": SubResource("Animation_4lcjb"),
+&"fade_out": SubResource("Animation_v22kg")
+}
+
+[node name="DashDust" type="Node3D" unique_id=1142235173]
+script = ExtResource("5_4lcjb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=28189096]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0.6458903, 0)
+billboard = 1
+render_priority = 80
+sprite_frames = SubResource("SpriteFrames_4lcjb")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1976999463]
+libraries/ = SubResource("AnimationLibrary_juqj4")
+autoplay = &"fade_out"
+
+[connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]

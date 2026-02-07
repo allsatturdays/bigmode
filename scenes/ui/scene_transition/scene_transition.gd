@@ -39,9 +39,12 @@ func play_building_transition2() -> void:
 func _on_building_complete() -> void:
 	is_building_transition = true
 
+
 func _on_dialogue_ended(resource: Resource) -> void:
 	is_in_dialogue = false
 	play_building_transition2()
+
+
 	
 func emit_transition_complete() -> void:
 	GameEvents.emit_signal("on_transition_complete")

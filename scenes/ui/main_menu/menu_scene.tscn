@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bfxskvp6hlhfn" path="res://scenes/ui/main_menu/menu_scene.gd" id="1_tjy2w"]
 [ext_resource type="Script" uid="uid://by1vav2h3nety" path="res://scenes/ui/main_menu/main_menu/main_menu.gd" id="2_0mrft"]
 [ext_resource type="PackedScene" uid="uid://bea1npdsg7ii1" path="res://scenes/ui/options_menu/options_menu.tscn" id="3_5uviw"]
+[ext_resource type="FontFile" uid="uid://cu45jgaqsrwkt" path="res://assets/fonts/Square Thief.ttf" id="3_d11ak"]
+[ext_resource type="Texture2D" uid="uid://sf3bdrm3oq2t" path="res://assets/visuals/ui/Illustration220.png" id="3_nggtw"]
 [ext_resource type="PackedScene" uid="uid://cjidrww5kw84q" path="res://node/menu/menu_button/menu_button.tscn" id="3_ynpaw"]
 [ext_resource type="PackedScene" uid="uid://cegf3gabvsje2" path="res://components/control/control_grab_focus/control_grab_focus.tscn" id="4_d11ak"]
 [ext_resource type="PackedScene" uid="uid://cqdh08oywawux" path="res://components/builder/ui_builder/ui_builder.tscn" id="4_yglay"]
@@ -35,6 +37,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="background_texture" type="TextureRect" parent="MainMenu/RootMarginContainer" unique_id=1504827580]
+layout_mode = 2
+texture = ExtResource("3_nggtw")
+expand_mode = 2
+
 [node name="FooterMarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer" unique_id=1137223085]
 layout_mode = 2
 size_flags_vertical = 8
@@ -64,10 +71,15 @@ mouse_filter = 2
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="MainMenu/RootMarginContainer" unique_id=1680630663]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer" unique_id=1151500959]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer" unique_id=2030872663]
+layout_mode = 2
+theme_override_constants/margin_left = 697
+theme_override_constants/margin_top = 116
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer" unique_id=1151500959]
 layout_mode = 2
 
-[node name="MainMenuMarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer" unique_id=1858736291]
+[node name="MainMenuMarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer" unique_id=1858736291]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -76,57 +88,59 @@ theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 48
 
-[node name="MainMenuVBoxContainer" type="VBoxContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer" unique_id=1029268696]
+[node name="MainMenuVBoxContainer" type="VBoxContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer" unique_id=1029268696]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MainMenuLabelsVBoxContainer" type="VBoxContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer" unique_id=493620983]
+[node name="MainMenuLabelsVBoxContainer" type="VBoxContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer" unique_id=493620983]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="TitleLabel" type="Label" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=1570120292]
+[node name="TitleLabel" type="Label" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=1570120292]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d11ak")
 theme_override_font_sizes/font_size = 64
-text = "Game Name"
+text = "Thief Trot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SeparationMarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=132649691]
+[node name="SeparationMarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer" unique_id=132649691]
 layout_mode = 2
 
-[node name="MainMenuButtonsVBoxContainer" type="VBoxContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer" unique_id=1058969369]
+[node name="MainMenuButtonsVBoxContainer" type="VBoxContainer" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer" unique_id=1058969369]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="PlayMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=4948628 instance=ExtResource("3_ynpaw")]
+[node name="PlayMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=4948628 instance=ExtResource("3_ynpaw")]
 layout_mode = 2
 text = "       PLAY       "
 id = 1
 label = "PLAY"
 
-[node name="OptionsMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=899874871 instance=ExtResource("3_ynpaw")]
+[node name="OptionsMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=899874871 instance=ExtResource("3_ynpaw")]
 layout_mode = 2
 text = "       OPTIONS       "
 id = 2
 label = "OPTIONS"
 
-[node name="CreditsMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=604660313 instance=ExtResource("3_ynpaw")]
+[node name="CreditsMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=604660313 instance=ExtResource("3_ynpaw")]
 layout_mode = 2
 text = "       CREDITS       "
 id = 3
 label = "CREDITS"
 
-[node name="QuitMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=1633221463 instance=ExtResource("3_ynpaw")]
+[node name="QuitMenuButton" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=1633221463 instance=ExtResource("3_ynpaw")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "       QUIT       "
 id = 4
 label = "QUIT"
 
-[node name="ControlGrabFocus" parent="MainMenu/RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=504916727 instance=ExtResource("4_d11ak")]
+[node name="ControlGrabFocus" parent="MainMenu/RootMarginContainer/AspectRatioContainer/MarginContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" unique_id=504916727 instance=ExtResource("4_d11ak")]
 
 [node name="HeaderMarginContainer" type="MarginContainer" parent="MainMenu/RootMarginContainer" unique_id=1556075468]
 layout_mode = 2

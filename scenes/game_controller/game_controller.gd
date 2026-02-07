@@ -12,6 +12,8 @@ var current_2d_scene
 var current_gui_scene
 var current_building: Building
 var next_room_path: String
+var is_in_slowmo: bool = false
+var current_room: Room
 
 var _action_handler: ActionHandler = ActionHandler.new()
 
@@ -20,6 +22,7 @@ var _action_handler: ActionHandler = ActionHandler.new()
 @onready var dialogue_controller: DialogueController = $DialogueController
 @onready var environment: WorldEnvironment = $Environment/WorldEnvironment
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var camera_shaker = $Area3D
 
 
 func _ready() -> void:
@@ -27,11 +30,14 @@ func _ready() -> void:
 	GameEvents.connect("on_room_complete", _on_room_complete)
 	Main.game_controller = self
 	current_gui_scene = $GUI/MenuScene
-	current_building = $BuildingContainer/Building
+	#current_building = $BuildingContainer/Building
+	current_building = $BuildingContainer/BuildingUmberHouse
 	current_building.generate_rooms()
 	
 
-	
+func _physics_process(delta: float) -> void:
+	if is_in_slowmo:
+		Engine.time_scale = .3
 
 func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
 	if current_gui_scene != null:
@@ -73,6 +79,7 @@ func change_3d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 	var new = load(new_scene).instantiate()
 	world_3d.add_child(new)
 	current_3d_scene = new
+	current_room = new
 
 
 func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool = false )-> void:
@@ -90,6 +97,13 @@ func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 
 func _on_player_death() -> void:
 	change_gui_scene("res://scenes/ui/game_over_ui/game_over_ui_scene.tscn", true, false)
+	camera_shaker.add_trauma(3.1)
+	#is_in_slowmo = true
+	#get_tree().create_timer(1.5, true, false, true).timeout.connect(_end_slow_mo)
+	
+
+func _end_slow_mo() -> void:
+	is_in_slowmo = false
 	
 	
 func _on_room_complete(next_room: String) -> void:
@@ -101,3 +115,4 @@ func _on_room_complete(next_room: String) -> void:
 
 func play_spin_anim()-> void:
 	anim_player.play("spin_2")
+	

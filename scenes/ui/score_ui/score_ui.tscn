@@ -1,13 +1,27 @@
 [gd_scene format=3 uid="uid://bqkc1a7fx4sgo"]
 
 [ext_resource type="Script" uid="uid://dnte425wvq0ss" path="res://scenes/ui/score_ui/score_ui.gd" id="1_qukyi"]
+[ext_resource type="Texture2D" uid="uid://dgu00w3wog3et" path="res://assets/visuals/ui/score_ui.png" id="2_4gavr"]
 [ext_resource type="PackedScene" uid="uid://7x8kq3ax2dj8" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="2_gvfh5"]
+[ext_resource type="FontFile" uid="uid://cu45jgaqsrwkt" path="res://assets/fonts/Square Thief.ttf" id="2_i68cx"]
 [ext_resource type="PackedScene" uid="uid://bea1npdsg7ii1" path="res://scenes/ui/options_menu/options_menu.tscn" id="3_uny0y"]
 [ext_resource type="PackedScene" uid="uid://cqdh08oywawux" path="res://components/builder/ui_builder/ui_builder.tscn" id="4_i68cx"]
+[ext_resource type="Texture2D" uid="uid://d4d3l472u6vuq" path="res://assets/visuals/ui/Illustration235.png" id="7_6rjhm"]
 
 [node name="ScoreUi" type="CanvasLayer" unique_id=628464511]
 process_mode = 3
 script = ExtResource("1_qukyi")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=560222062]
+offset_left = 21.999998
+offset_top = 9.999999
+offset_right = 1496.9999
+offset_bottom = 1069.9999
+rotation = 0.052398946
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_4gavr")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=292294258]
 anchors_preset = 15
@@ -19,8 +33,9 @@ alignment_horizontal = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer" unique_id=1367707001]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 166
+theme_override_constants/margin_top = 127
+theme_override_constants/margin_right = 419
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer" unique_id=1176736495]
 layout_mode = 2
@@ -28,16 +43,18 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/MarginContainer/VBoxContainer" unique_id=1906916786]
 layout_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=653196411]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
-text = "Score: "
-
 [node name="ScoreValue" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=416748856]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_i68cx")
 theme_override_font_sizes/font_size = 24
+
+[node name="ScoreLabel" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=653196411]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_i68cx")
+theme_override_font_sizes/font_size = 23
 
 [node name="Control" type="Control" parent="." unique_id=761989987]
 layout_mode = 3
@@ -60,5 +77,38 @@ visible = false
 layout_mode = 1
 
 [node name="UiBuilder" parent="Control" unique_id=1745100880 instance=ExtResource("4_i68cx")]
+
+[node name="Control2" type="Control" parent="." unique_id=878190307]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="TimerLabel" type="Label" parent="Control2" unique_id=1340234275]
+layout_mode = 0
+offset_left = -65.0
+offset_top = -1.0
+offset_right = -25.0
+offset_bottom = 26.0
+scale = Vector2(0.9938241, 1)
+theme_override_fonts/font = ExtResource("2_i68cx")
+theme_override_font_sizes/font_size = 25
+
+[node name="Timer" type="Timer" parent="." unique_id=651533528]
+one_shot = true
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1559202441]
+offset_left = 980.0
+offset_top = 475.0
+offset_right = 1649.0
+offset_bottom = 972.0
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("7_6rjhm")
+stretch_mode = 4
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="Control/PauseMenu"]

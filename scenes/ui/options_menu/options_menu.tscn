@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cjidrww5kw84q" path="res://node/menu/menu_button/menu_button.tscn" id="4_m78wu"]
 [ext_resource type="PackedScene" uid="uid://c2owjxrhgllgx" path="res://scenes/ui/options_menu/control_options/controls_options.tscn" id="5_7tfqe"]
 [ext_resource type="PackedScene" uid="uid://pd1a3fwjkrdl" path="res://scenes/ui/options_menu/audio_options/audio_options.tscn" id="5_kiw17"]
+[ext_resource type="FontFile" uid="uid://cu45jgaqsrwkt" path="res://assets/fonts/Square Thief.ttf" id="5_yujr4"]
+[ext_resource type="StyleBox" uid="uid://blo16nyfvqpl" path="res://resources/ui/button_normal.tres" id="6_jasm6"]
+[ext_resource type="StyleBox" uid="uid://blf1eso55pjf0" path="res://resources/ui/button_pressed.tres" id="7_nn0dd"]
+[ext_resource type="StyleBox" uid="uid://dy1xy8a7uifof" path="res://resources/ui/button_hover.tres" id="8_4gaon"]
 
 [node name="OptionsMenu" type="Control" unique_id=856836720]
 layout_mode = 3
@@ -44,6 +48,7 @@ theme_override_constants/margin_bottom = 4
 [node name="TabHBoxContainer" type="HBoxContainer" parent="RootMarginContainer/VBoxContainer/TabMarginContainer" unique_id=224833361]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 41
 alignment = 1
 
 [node name="AudioMenuButton" parent="RootMarginContainer/VBoxContainer/TabMarginContainer/TabHBoxContainer" unique_id=1796406676 instance=ExtResource("4_m78wu")]
@@ -88,14 +93,44 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="LabelLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MasterMenuSlider/HBoxContainer/LabelMarginContainer/LabelHBoxContainer" index="0" unique_id=1269365799]
+theme_override_fonts/font = ExtResource("5_yujr4")
+
+[node name="ValueLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MasterMenuSlider/HBoxContainer/ValueMarginContainer/ValueHBoxContainer" index="0" unique_id=1093275041]
+theme_override_fonts/font = ExtResource("5_yujr4")
+
 [node name="HSlider" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MasterMenuSlider/HBoxContainer/SliderMarginContainer/SliderVBoxContainer/SliderMarginContainer" index="0" unique_id=1488911984]
 value = 0.0
+
+[node name="LabelLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MusicMenuSlider/HBoxContainer/LabelMarginContainer/LabelHBoxContainer" index="0" unique_id=1269365799]
+theme_override_fonts/font = ExtResource("5_yujr4")
+
+[node name="ValueLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MusicMenuSlider/HBoxContainer/ValueMarginContainer/ValueHBoxContainer" index="0" unique_id=1093275041]
+theme_override_fonts/font = ExtResource("5_yujr4")
 
 [node name="HSlider" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/MusicMenuSlider/HBoxContainer/SliderMarginContainer/SliderVBoxContainer/SliderMarginContainer" index="0" unique_id=1488911984]
 value = 0.0
 
+[node name="LabelLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/SFXMenuSlider/HBoxContainer/LabelMarginContainer/LabelHBoxContainer" index="0" unique_id=1269365799]
+theme_override_fonts/font = ExtResource("5_yujr4")
+
+[node name="ValueLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/SFXMenuSlider/HBoxContainer/ValueMarginContainer/ValueHBoxContainer" index="0" unique_id=1093275041]
+theme_override_fonts/font = ExtResource("5_yujr4")
+
 [node name="HSlider" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/SFXMenuSlider/HBoxContainer/SliderMarginContainer/SliderVBoxContainer/SliderMarginContainer" index="0" unique_id=1488911984]
 value = 0.0
+
+[node name="LabelLabel" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/AudioMenuToggle/HBoxContainer/LabelMarginContainer/LabelHBoxContainer" index="0" unique_id=603332429]
+theme_override_fonts/font = ExtResource("5_yujr4")
+
+[node name="ToggleMarginContainer" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/AudioMenuToggle/HBoxContainer" index="1" unique_id=1049719363]
+theme_override_constants/margin_top = 13
+
+[node name="ToggleButton" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer/AudioOptions/RootVBoxContainer/AudioMenuToggle/HBoxContainer/ToggleMarginContainer/ToggleVBoxContainer" index="0" unique_id=1205692222]
+theme_override_fonts/font = ExtResource("5_yujr4")
+theme_override_styles/normal = ExtResource("6_jasm6")
+theme_override_styles/pressed = ExtResource("7_nn0dd")
+theme_override_styles/hover = ExtResource("8_4gaon")
 
 [node name="ControlsOptions" parent="RootMarginContainer/VBoxContainer/OptionsMarginContainer/OptionsVBoxContainer" unique_id=2063547654 instance=ExtResource("5_7tfqe")]
 unique_name_in_owner = true
